@@ -17,6 +17,7 @@
 \newtheorem{lemma}{引理}[section]
 \newtheorem{corollary}{推论}[section]
 \newtheorem{exam}{例}[subsection]
+\newtheorem{definition}{定义}[section]
 
 \title{基础数学知识}
 \author{屈泰瑞 XiaoQuQu}
@@ -45,11 +46,13 @@
 
 \subsection{数域}
 
-对于一个数的集合 $F$，如果 $\forall a,b\in F$，都有 $a+b,a-b,a\times b,\frac
-    {a}{b}(b\ne 0) \in F$，那么 $F$ 就称为一个数域. 几个常见的数域都有自己的记号，如有
-理数域 $Q$，实数域 $R$，复数域 $C$. 但注意，自然数的集合 $N$ 不是一个域.
+\begin{definition}
+    对于一个数的集合 $F$，如果 $\forall a,b\in F$，都有 $a+b,a-b,a\times b,\frac
+        {a}{b}(b\ne 0) \in F$，那么 $F$ 就称为一个数域.
+\end{definition}
 
-如果一个数域 $F$ 里的每一个数都在另一个数域 $P$ 里，那么称 $F$ 是 $P$ 的一个子域.
+几个常见的数域都有自己的记号，如有理数域 $Q$，实数域 $R$，复数域 $C$. 但注意，自然数的集合 $N$ 不是一个域. 如果一个数
+域 $F$ 里的每一个数都在另一个数域 $P$ 里，那么称 $F$ 是 $P$ 的一个子域.
 
 \begin{theorem}
     有理数域 $Q$ 是最小的数域.
@@ -73,16 +76,20 @@
 
 \subsection{整除}
 
-对于两个整数 $a,b$，若 $a\ne 0$ 且存在 $c \in Z$ 使得 $b=ca$，那么我们称 $b$ 可被
-$a$ 整除，记作 $a\mathrel{|}b$，否之，记作 $a \nmid b$.
+\begin{definition}
+    对于两个整数 $a,b$，若 $a\ne 0$ 且存在 $c \in Z$ 使得 $b=ca$，那么我们称 $b$ 可被
+    $a$ 整除，记作 $a\mid b$，否之，记作 $a \nmid b$.
+\end{definition}
 
-若对于两个整数 $a,b$，有 $a|b$，我们称 $a$ 为 $b$ 的因数，$b$ 为 $a$ 的倍数.
+若对于两个整数 $a,b$，有 $a\mid b$，我们称 $a$ 为 $b$ 的因数，$b$ 为 $a$ 的倍数.
 
 \subsection{最小公倍数、最大公因数}
 
-对于给定的 $a,b$，记最大使得 $x \mid a,x \mid b$ 的 $x\in Z$ 为 $a,b$ 的最大公因数
-，记作 $\gcd(a,b)$. 记最小使得 $a\mid x,b\mid x$ 的 $x \in Z$ 为 $a,b$ 的最小
-公因数，记作 $\operatorname{lcm}(a,b)$.
+\begin{definition}
+    对于给定的 $a,b$，记最大使得 $x \mid a,x \mid b$ 的 $x\in Z$ 为 $a,b$ 的最大公因数
+    ，记作 $\gcd(a,b)$. 记最小使得 $a\mid x,b\mid x$ 的 $x \in Z$ 为 $a,b$ 的最小
+    公因数，记作 $\operatorname{lcm}(a,b)$.
+\end{definition}
 
 \begin{theorem}
     对于给定的 $a,b$，$\gcd(a,b)\times \operatornamewithlimits{lcm}(a,b)=a\times b$.
@@ -101,12 +108,14 @@ $a$ 整除，记作 $a\mathrel{|}b$，否之，记作 $a \nmid b$.
 若两个整数 $a,b$ 有 $\gcd(a,b)=1$，那么我们称 $a,b$ \textbf{互素}. 如，$2,3$ 就是
 一对互素的数，$2,4$ 不是一对互素的数，因为 $\gcd(2,4)=2\ne 1$.
 
-显然，质数与任一非自身的数都互素.
+显然，质数与任一非自身倍数的数都互素.
 
 \subsection{同余}
 
-若有 $a\in Z,b\in Z$ 使得 $a=xm+r,b=ym+r$，我们就称 $a,b$ 在模 $m$ 意义下同余，
-记作 $a\equiv b \pmod m$.
+\begin{definition}
+    若有 $a\in Z,b\in Z$ 使得 $a=xm+r,b=ym+r$，我们就称 $a,b$ 在模 $m$ 意义下同余，
+    记作 $a\equiv b \pmod m$.
+\end{definition}
 
 同余有非常多的性质，简单列举几条容易被发现的性质.
 
@@ -165,12 +174,60 @@ $a$ 整除，记作 $a\mathrel{|}b$，否之，记作 $a \nmid b$.
     所以有 $a\times x \equiv b\times x \pmod m$.
 \end{proof}
 
+注意，若有 $a\equiv b\pmod m$，不一定有 $\frac{a}{c}\equiv \frac{b}{c}\pmod m$. 事实上，该式大部分时间不成立，
+能使 $ac^{-1}\equiv bc^{-1}\pmod m$ 的 $c^{-1}$ 称为 $c$ 在模 $m$ 意义下的乘法逆元.
+
+\begin{lemma}
+    若 $\gcd(a,b)=1$，必然不存在 $c\in [0,b-1]$ 使得 $ac\equiv 1\pmod b$.
+\end{lemma}
+
+\begin{proof}
+    反证法. 设 $b\mid ac$，因为 $\gcd(a,b)=1$，所以 $b\mid c$. 但 $c<b$，与 $b\mid c$ 矛盾. 故不存在 $c$ 使得
+    $b \mid ac$.
+\end{proof}
+
+\begin{lemma}
+    当 $\gcd(a,m)=1$ 时，必定唯一存在 $c$ 使得 $ac\equiv 1\pmod m$.
+\end{lemma}
+
+\begin{proof}
+    设 $S=\{0,1,\cdots,m-1\},A=\{0\times a \bmod m,1\times a \bmod m,2\times a \bmod m,\cdots,
+        (m-1)\times a\bmod m\}$. 若 $A$ 是一个集合，则集合 $S$ 必定与集合 $A$ 等价，则必然会存在一个 $k\in[0
+            ,m-1]$ 使得 $k\times a\bmod m=1$. 故转证 $A$ 是一个集合，即 $A$ 内没有重复的数.
+
+    反证法，假设存在 $i,j(i>j)$ 使得 $A_i=A_j$，即 $(i-1)a\equiv (j-1)a\pmod m$，移项，得 $(i-j)a\equiv 0
+        \pmod m$.
+
+    因为 $\gcd(a,m)=1$，根据引理 1.1 知，必然不存在 $ca\equiv 0\pmod m$，与已知 $(i-j)a\equiv 0\pmod m$ 矛盾. 得证.
+\end{proof}
+
+\begin{lemma}
+    当 $\gcd(a,m)\ne 1$ 的时候，必定不存在 $c$ 使得 $ac\equiv 1\pmod m$.
+\end{lemma}
+
+\begin{proof}
+    反证法，假设 $\gcd(a,m)>1$，且存在 $c$ 使得 $ac\equiv 1\pmod m$. 则等价于存在 $c,y\in Z$ 使得 $ac+my=1$.
+
+    根据 $\gcd$ 的定义，有 $\gcd(a,m)\mid a,m$. 又因为 $c,y\in Z$，所以 $\gcd(a,m)\mid (ac+my)$，即 $\gcd
+        (a,m)\mid 1$. 与假设 $\gcd(a,m)>1$ 矛盾. 得证.
+\end{proof}
+
+\begin{theorem}
+    自然数 $a$ 在模 $m$ 意义下有乘法逆元当且仅当 $\gcd(a,m)=1$.
+\end{theorem}
+
+\begin{proof}
+    根据引理 1.2 与引理 1.3，得证.
+\end{proof}
+
 \subsection{函数、积性函数、完全积性函数}
 
 函数 $f$ 可以简单理解成变换.
 
-他的定义如下：\textbf{对于任意 $x,y,y'\in f$，若 $(x,y)\in f,(x,y')\in F$，都满足 $y=y'$}，这样
-的一个关系 $f$ 就称为函数.
+\begin{definition}
+    对于任意 $x,y,y'\in f$，若 $(x,y)\in f,(x,y')\in F$，都满足 $y=y'$，这样
+    的一个关系 $f$ 就称为函数.
+\end{definition}
 
 我们习惯将 $(x,y)\in f$ 等价地写成 $y=f(x)$.
 
@@ -189,12 +246,12 @@ $a$ 整除，记作 $a\mathrel{|}b$，否之，记作 $a \nmid b$.
 
 \subsection{质数及其性质}
 
-若一个数 $p$，他的因子仅有 $1$ 与它自身，那么称 $p$ 是一个\textbf{质数}，质数又称素数. 若存在 $x$ 使得 $x|p$ 且 $x
-    \ne 1,x\ne p$，那么称 $p$ 是一个合数.
+\begin{definition}
+    若一个数 $p$，他的因子仅有 $1$ 与它自身，那么称 $p$ 是一个质数，质数又称素数. 若存在 $x$ 使得 $x\mid p$ 且 $x
+        \ne 1,x\ne p$，那么称 $p$ 是一个合数.
+\end{definition}
 
 若 $p$ 是一个质数（或合数），那么 $-p$ 也是一个质数（或合数），$1$ 既不是质数也不是合数.
-
-\newpage
 
 \begin{theorem}
     素数有无穷多个.
@@ -228,16 +285,16 @@ $a$ 整除，记作 $a\mathrel{|}b$，否之，记作 $a \nmid b$.
 
 \subsection{算数基本定理}
 
-\begin{lemma}{（裴蜀定理）}
+\begin{lemma}[裴蜀定理]
     若 $a,b$ 是整数，且 $\gcd(a,b)=d$，那么对于任意的 $x,y$，$ax+by$ 都是 $d$ 的倍数. 特别的，一定存在 $x,y$
-    使得 $ax+by=d$ 成立. 
+    使得 $ax+by=d$ 成立.
 \end{lemma}
 
 \begin{proof}
     \begin{enumerate}
-        \item 若 $a,b$ 中有一个为 $0$，那么 $\gcd(a,b)=a$，这时裴蜀定理显然成立. 
+        \item 若 $a,b$ 中有一个为 $0$，那么 $\gcd(a,b)=a$，这时裴蜀定理显然成立.
         \item 若 $a,b$ 均不为零. 由于有 $\gcd(a,b)=\gcd(a,-b)$，不妨设 $a\ge b>0,\gcd(a,b)=d$. 对于
-              $ax+by=d$，两边同时除以 $d$，得 $a'x+b'y=1$，其中 $\gcd(a',b')=1$. 
+              $ax+by=d$，两边同时除以 $d$，得 $a'x+b'y=1$，其中 $\gcd(a',b')=1$.
     \end{enumerate}
 
     考虑辗转相除法，$\gcd(a,b)=\gcd(b,a\bmod b)$，设 $a\bmod b = r$，那么有
@@ -257,13 +314,13 @@ $a$ 整除，记作 $a\mathrel{|}b$，否之，记作 $a \nmid b$.
     \begin{equation*}
         \begin{split}
             \begin{aligned}
-                a_1 &= q_1b+r_1 &(0\leq r_1<b_1) \\ 
-                b_1 &= q_2r_1+r_2 &(0\leq r_2<r_1) \\ 
-                r_1 &= q_3r_2+r_3 &(0\leq r_3<r_2) \\ 
-                &\cdots \\ 
-                r_{n-3} &= q_{n-1}r_{n-2}+r_{n-1} \\
-                r_{n-2} &= q_nr_{n-1}+r_n \\ 
-                r_{n-1} &= q_{n+1}r_n
+                a_1     & = q_1b+r_1               & (0\leq r_1<b_1) \\
+                b_1     & = q_2r_1+r_2             & (0\leq r_2<r_1) \\
+                r_1     & = q_3r_2+r_3             & (0\leq r_3<r_2) \\
+                        & \cdots                                     \\
+                r_{n-3} & = q_{n-1}r_{n-2}+r_{n-1}                   \\
+                r_{n-2} & = q_nr_{n-1}+r_n                           \\
+                r_{n-1} & = q_{n+1}r_n
             \end{aligned}
         \end{split}
     \end{equation*}
@@ -271,122 +328,121 @@ $a$ 整除，记作 $a\mathrel{|}b$，否之，记作 $a \nmid b$.
     为符合最终形式，将 $q$ 替换成 $x$，不妨令辗转相除法在除到互质的时候退出则 $r_n=1$，所以有
 
     $$
-    r_{n-2}=x_nr_{n-1}+1
+        r_{n-2}=x_nr_{n-1}+1
     $$
 
     即
 
     $$
-    1=r_{n-2}-x_nr_{n-1}
+        1=r_{n-2}-x_nr_{n-1}
     $$
 
     由倒数第三个式子 $r_{n-1}=r_{n-3}-x_{n-1}r_{n-2}$ 代入上式，得
 
     $$
-    1=(1+x_nx_{n-1})r_{n-2}-x_nr_{n-3}
+        1=(1+x_nx_{n-1})r_{n-2}-x_nr_{n-3}
     $$
 
-    然后用同样的办法用它上面的等式逐个地消去 $r_{n-2},\cdots,r_1$，可证得 $1=a_1x+b_1y$. 
-    
-    这样等于是一般式中 $d=1$ 的情况. 
+    然后用同样的办法用它上面的等式逐个地消去 $r_{n-2},\cdots,r_1$，可证得 $1=a_1x+b_1y$.
+
+    这样等于是一般式中 $d=1$ 的情况.
 \end{proof}
 
-\begin{lemma}
-    若一个素数 $p$ 有 $p\mid ab$，那么 $p\mid a$ 与 $p\mid b$ 中至少有一个成立. 
+\begin{lemma}[算数基本引理]
+    若一个素数 $p$ 有 $p\mid ab$，那么 $p\mid a$ 与 $p\mid b$ 中至少有一个成立.
 \end{lemma}
 
 \begin{proof}
-    若 $p\mid a$，证明完毕. 否则，由素数定义知，$\gcd(a,p)=1$，根据裴蜀定理，有整数对 $(m,n)$ 使得 $ma+np=1$. 
+    若 $p\mid a$，证明完毕. 否则，由素数定义知，$\gcd(a,p)=1$，根据裴蜀定理，有整数对 $(m,n)$ 使得 $ma+np=1$.
 
-    于是，$b=b(ma+np)=abm+bnp$. 
+    于是，$b=b(ma+np)=abm+bnp$.
 
-    由于有 $p\mid ab$，不妨设 $pk=ab$. 那么上式可以被转成 $pkm+bnp=p(km+bn)$. 于是 $p\mid b$. 
+    由于有 $p\mid ab$，不妨设 $pk=ab$. 那么上式可以被转成 $pkm+bnp=p(km+bn)$. 于是 $p\mid b$.
 \end{proof}
 
 上述引理被称为 \textbf{算数基本引理}，其是素数的最本质性质. 上述给出的素数的定义，实际上为\textbf{不可约数}. 素数是
-不可约数的子集. 
+不可约数的子集.
 
-\begin{theorem}
+\begin{theorem}[算数基本定理]
     任何一个大于 $1$ 的正整数 $x$，都可以被分解为 $x=p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_k^{\alpha_k}(p_1<
-    p_2<\cdots<p_k)$ 的形式，其中，$p_1,p_2,\cdots,p_k$ 为素数.
+        p_2<\cdots<p_k)$ 的形式，其中，$p_1,p_2,\cdots,p_k$ 为素数.
 \end{theorem}
 
 \begin{proof}
     \textbf{存在性，待证命题：大于 $1$ 的自然数必然可以被写成素数的乘积. }
 
-    反证法，设存在一个最小的大于 $1$ 的正整数 $n$，使得 $n$ 不能被分解为素数的乘积. 
+    反证法，设存在一个最小的大于 $1$ 的正整数 $n$，使得 $n$ 不能被分解为素数的乘积.
 
     首先，$n$ 不是质数. 因为任何一个质数都可以被分解成自身与 $1$ 的乘积. 其次，$n$ 不是合数，因为任何一个合数都可以被分解
     成两个小于自身、大于 $1$ 的数 $a,b$ 的乘积. 由 $n$ 的定义可知，$n$ 是最小的不能被分解为质数的数，于是 $a,b$ 都可以
     被分解为质数的乘积，那么 $n$ 也可以被分解为质数的乘积. 所以 $n$ 不是合数. 根据 $n$ 的定义可知，$n$ 不为 $1$. 所以
-    不存在这样的 $n$. 得证. 
+    不存在这样的 $n$. 得证.
 
     \textbf{唯一性. }
 
     反证法，设 $n$ 是最小的大于 $1$ 的正整数，使得 $n=p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_r^{\alpha_r}
-    =q_1^{\beta_1}q_2^{\beta_2}\cdots q_k^{\beta_k}$. 
+        =q_1^{\beta_1}q_2^{\beta_2}\cdots q_k^{\beta_k}$.
 
     根据引理 1.2，根据 $p_1\mid q_1^{\beta_1}q_2^{\beta_2}\cdots q_k^{\beta_k}$，存在一个 $i$ 使得 $p_1
-    \mid q_i^{\beta_i}(1\le i\le k)$，不妨设 $i=1$. 有 $q_1$ 为质数可知，$p_1\mid q_1$，所以 $p_1=q_1$. 
+        \mid q_i^{\beta_i}(1\le i\le k)$，不妨设 $i=1$. 有 $q_1$ 为质数可知，$p_1\mid q_1$，所以 $p_1=q_1$.
 
     假设 $\alpha_1>\beta_1$，将两个分解式同时除以 $q_1^{\beta_1}$，得
 
     $$
-    p_1^{\alpha_1-\beta_1}p_2^{\alpha_2}\cdots p_r^{\alpha_r}=q_2^{\beta_2}\cdots q_k^{\beta_k}
+        p_1^{\alpha_1-\beta_1}p_2^{\alpha_2}\cdots p_r^{\alpha_r}=q_2^{\beta_2}\cdots q_k^{\beta_k}
     $$
 
     那么，按照之前的论证，会有 $p_1$ 整除 $q_2,q_3,\cdots,q_k$ 中的任意一个. 但由于 $q_1,q_2,\cdots,q_k$ 两
     两不等，所以 $p_1=q_1\ne q_i(2\le i\le k)$. 综上，$\alpha_1\not>\beta_1$. 同理可证 $\alpha_1\not<
-    \beta_1$. 于是，$\alpha_1=\beta_1$. 
+        \beta_1$. 于是，$\alpha_1=\beta_1$.
 
     于是，我们得
-    
+
     $$
-    n'=\frac{n}{p_1^{\alpha_1}}=p_2^{\alpha_2}\cdots p_r^{\alpha_r}=q_2^{\beta_2}\cdots q_k^{\beta_k}
-    <n
+        n'=\frac{n}{p_1^{\alpha_1}}=p_2^{\alpha_2}\cdots p_r^{\alpha_r}=q_2^{\beta_2}\cdots q_k^{\beta_k}
+        <n
     $$
 
     由于 $n'<n$，且 $n'$ 也可以被分解成 $n'=p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_r^{\alpha_r}
-    =q_1^{\beta_1}q_2^{\beta_2}\cdots q_k^{\beta_k}$ 的形式，与假设的 $n$ 最小相矛盾. 所以质数分
-    解是唯一的. 
+        =q_1^{\beta_1}q_2^{\beta_2}\cdots q_k^{\beta_k}$ 的形式，与假设的 $n$ 最小相矛盾. 所以质数分
+    解是唯一的.
 \end{proof}
 
-定理 1.8 也被称为\textbf{算数基本定理}或\textbf{唯一分解定理}. 该分解式称为\textbf{标准素因数分解式}. 算术基本定理和
-算术基本引理，两个定理是等价的. 
+该分解式称为\textbf{标准素因数分解式}. 算术基本定理和算术基本引理，两个定理是等价的.
 
 \section{同余}
 
 \subsection{同余式的定义及简单应用}
 
-同余及同余式的定义，已在 1.4 中介绍. 这里给出几个同余式的例. 
+同余及同余式的定义，已在 1.4 中介绍. 这里给出几个同余式的例.
 
 \begin{exam}
-    试证明，$n=8888^{2222}+7777^{3333}$ 是 $37$ 的倍数. 
+    试证明，$n=8888^{2222}+7777^{3333}$ 是 $37$ 的倍数.
 \end{exam}
 
 \begin{proof}
-    要证明 $n$ 是 $37$ 的倍数，即证明 $n\equiv 0 \pmod {37}$. 
+    要证明 $n$ 是 $37$ 的倍数，即证明 $n\equiv 0 \pmod {37}$.
 
-    由于 $8888=37\times 240+8,7777=37\times 210+7$，所以 $8888\equiv 8,7777\equiv 7\pmod {37}$. 
+    由于 $8888=37\times 240+8,7777=37\times 210+7$，所以 $8888\equiv 8,7777\equiv 7\pmod {37}$.
 
-    再由于 $8^2=64=37\times 2,7^3=343=37\times 9+10$，得 $8^2\equiv -10,7^3\equiv 10\pmod {37}$. 
-    
-    所以 $n=8888^{2222}+7777^{3333}\equiv(-10)^{1111}+10^{1111}\equiv 0\pmod {37}$. 
+    再由于 $8^2=64=37\times 2,7^3=343=37\times 9+10$，得 $8^2\equiv -10,7^3\equiv 10\pmod {37}$.
+
+    所以 $n=8888^{2222}+7777^{3333}\equiv(-10)^{1111}+10^{1111}\equiv 0\pmod {37}$.
 \end{proof}
 
 \begin{exam}
-    任意给定一组数 $a_1,a_2,\cdots,a_n$，试证明：必定存在 $1\le i<j\le n$，使得 $n\mid \sum\limits_{k=i}^j a_k$. 
+    任意给定一组数 $a_1,a_2,\cdots,a_n$，试证明：必定存在 $1\le i<j\le n$，使得 $n\mid \sum\limits_{k=i}^j a_k$.
 \end{exam}
 
 \begin{proof}
-    记 $s_k=(\sum\limits_{l=1}^k a_l)\bmod n$，特别的，$s_0=0$. 
-    
+    记 $s_k=(\sum\limits_{l=1}^k a_l)\bmod n$，特别的，$s_0=0$.
+
     显然，$s_k\in[0,n-1]$，即，$s_k$ 仅有 $n$种取值. 那么根据鸽巢原理，必定存在 $s_i=s_j(0\le i<j\le n)$，
-    此时有 $s_j-s_i\equiv 0\pmod n$，所以，区间 $a_{i+1},a_{i+1},\cdots,a_j$ 的和为 $n$ 的倍数. 
+    此时有 $s_j-s_i\equiv 0\pmod n$，所以，区间 $a_{i+1},a_{i+1},\cdots,a_j$ 的和为 $n$ 的倍数.
 \end{proof}
 
 \begin{theorem}
-    一个数 $x=\overline{a_na_{n-1}a_{n-2}\cdots a_1},x\bmod 9 = a_n+a_{n-1}+\cdots + a_1\bmod 9$. 
+    一个数 $x=\overline{a_na_{n-1}a_{n-2}\cdots a_1},x\bmod 9 = a_n+a_{n-1}+\cdots + a_1\bmod 9$.
 \end{theorem}
 
 \begin{proof}
@@ -400,42 +456,121 @@ $a$ 整除，记作 $a\mathrel{|}b$，否之，记作 $a \nmid b$.
         \end{split}
     \end{equation*}
 
-    得证. 
+    得证.
 \end{proof}
 
 \begin{exam}
-    求 $1532^5-1\bmod 9$. 
+    求 $1532^5-1\bmod 9$.
 \end{exam}
 
 \begin{proof}[解]
-    根据定理 2.1，有 $1532\equiv 1+5+3+2\equiv 2 \pmod 9$. 
+    根据定理 2.1，有 $1532\equiv 1+5+3+2\equiv 2 \pmod 9$.
 
-    所以 $1532^5\equiv 2^5\equiv 32 \equiv 5 \pmod 9$. 
-    
-    所以 $1532^5-1\equiv 5-1 \equiv 4 \pmod 9$. 
+    所以 $1532^5\equiv 2^5\equiv 32 \equiv 5 \pmod 9$.
+
+    所以 $1532^5-1\equiv 5-1 \equiv 4 \pmod 9$.
 \end{proof}
 
 \begin{exam}
-    设 $n=4444^{4444}$，有 $n$ 的各位数字之和为 $a$，$a$ 的各位数字之和为 $b$，求 $b$ 的各位数字之和 $c$. 
+    设 $n=4444^{4444}$，有 $n$ 的各位数字之和为 $a$，$a$ 的各位数字之和为 $b$，求 $b$ 的各位数字之和 $c$.
 \end{exam}
 
 \begin{proof}[解]
-    显然，有 $n\equiv a\equiv b \equiv c\pmod 9$. 
+    显然，有 $n\equiv a\equiv b \equiv c\pmod 9$.
 
-    因为 $4444\equiv 7\pmod 9$，所以 $n\equiv 4444^{4444}\equiv 7^{3\times 1481+1}\equiv {7^3}^{1481}\times 
-    7\pmod 9$. 
+    因为 $4444\equiv 7\pmod 9$，所以 $n\equiv 4444^{4444}\equiv 7^{3\times 1481+1}\equiv {7^3}^{1481}\times
+        7\pmod 9$.
 
     又因为 $7^3\equiv 343\equiv 1\pmod 9$，所以 $n\equiv 1\times 7\equiv 7 \pmod 9$. 这就说明，$c\equiv 7
-    \pmod 9$. 显然，最小的 $c$ 为 $7$. 我们只需要证明 $c<16$，即可证明 $c=7$. 
+        \pmod 9$. 显然，最小的 $c$ 为 $7$. 我们只需要证明 $c<16$，即可证明 $c=7$.
 
     因为一个自然数的每一位数字都取值于 $[0,9]$，所以，一个自然数的每位数字之和的最大值是由其的位数决定的. 那么，我们可以
     依次估算 $n,a,b,c$ 的最大可能位数.
 
     $n=4444^{4444}$，由于 $k$ 个 $4$ 为数的乘积不会超过 $4k$ 位数，所以 $n$ 不超过 $4\times 4444=17776$.
 
-    这说明了 $a\le 17776\times 9=159984$。继续推导，$b\le 1+9\times 5=46,c\le 4+9=13$。
+    这说明了 $a\le 17776\times 9=159984$. 继续推导，$b\le 1+9\times 5=46,c\le 4+9=13$.
 
-    因为 $c\le 13$，且 $c\equiv 7\pmod 9$，所以 $c=7$。
+    因为 $c\le 13$，且 $c\equiv 7\pmod 9$，所以 $c=7$.
+\end{proof}
+
+\subsection{整除与同余式}
+
+我们知道，对于两个自然数 $a,b$，只要 $b\ne 0$，总可以找到 $q,r$ 满足 $a=qb+r$ 且 $0\le r < b$. 特别的，当 $r=0$
+的时候，称 $b$ 整除 $a$，记作 $b\mid a$.
+
+显然，$b\mid a\Leftrightarrow a\equiv 0\pmod b$. 于是，我们可以用同余式的性质研究整除.
+
+这里不加证明的给出几个性质，设 $x=\overline{a_na_{n-1}\cdots a_1}$：
+
+\begin{itemize}
+    \item $2\mid x\Leftrightarrow 2\mid a_1,5\mid x\Leftrightarrow 5\mid a_1$;
+    \item $4\mid x\Leftrightarrow 4\mid \overline{a_2a_1},25\mid x\Leftrightarrow 25 \mid \overline{
+                  a_2a_1}$;
+    \item $8\mid x\Leftrightarrow 8\mid \overline{a_3a_2a_1},125\mid x\Leftrightarrow 125\mid
+              \overline{a_3a_2a_1}$;
+\end{itemize}
+
+\subsection{费马小定理}
+
+先给出一些必要的定义与引理. 
+
+\begin{definition}
+    对于一个非零自然数 $m$，关于 $m$ 同余的所有数构成了 $m$ 的一个剩余类. 显然对于 $m$，有 $m$ 个不同的剩余
+    类.
+
+    对于 $m$，从他的 $m$ 个剩余类中，从中选取 $x$ 类，每个类取一个数出来，这样所构成的子集就称为 $m$ 的剩余系. 若
+    此时的 $x=m$，则称这样的剩余系为完全剩余系.
+
+    对于 $m$，有 $\varphi(m)$ 个与 $m$ 互素且小于 $m$ 的数 $r$，从余数为 $r$ 的剩余类中每个类任取一个数，所构
+    成的子集称为关于 $m$ 的即约（或简化）剩余系.
+\end{definition}
+
+\begin{lemma}
+    若 $R$ 是一个模 $m$ 的即约剩余系，若有 $\alpha\in Z,\gcd(\alpha,m)=1$，则 $\{\alpha R_1,\alpha R_2,
+        \cdots, \alpha R_m\}$ 也是一个关于 $m$ 的即约剩余系.
+\end{lemma}
+
+\begin{proof}
+    首先证 $\forall i \in [1,m],\gcd(\alpha R_i,m)=1$. 显然，因为 $\gcd(\alpha,m)=1,\gcd(R_i,m)=1$，有 $\gcd
+        (\alpha R_i,m)=1$.
+
+    接着证 $\forall i,j\in [1,m],\alpha R_i \not\equiv \alpha R_j \pmod m$.
+
+    因为 $\gcd(\alpha,m)=1$，则根据定理 1.6 可知，在模 $m$ 的意义下必定存在 $\alpha^{-1}$. 等式两边同乘 $\alpha
+        ^{-1}$，得 $R_i\equiv R_j\pmod m$，与 $R$ 是一个关于 $m$ 得即约剩余系矛盾，故得证.
+\end{proof}
+
+\begin{theorem}[费马小定理]
+    若 $p$ 是素数，则对于任意一个自然数 $a$，有 $a^p\equiv a\pmod p$.
+\end{theorem}
+
+费马小定理是\textbf{欧拉定理}的一个特化. 欧拉定理的表述如下.
+
+\begin{theorem}[欧拉定理]
+    设欧拉函数 $\varphi(n)$ 为小于等于 $n$ 中，与 $n$ 互素的数的个数.
+
+    若 $\gcd(a,m)=1$，那么必有 $a_{\varphi(m)}\equiv 1\pmod m$.
+\end{theorem}
+
+显然，当 $m$ 为一个质数的时候，$\varphi(m)=m-1$，也就得到了费马小定理. 这里给出欧拉定理的证明.
+
+\begin{proof}
+    设 $r_1,r_2,\cdots,r_{\varphi(m)}$ 为一组模 $m$ 的既约剩余系. 
+
+    设 $\gcd(\alpha,m)=1$，那么根据上述引理 2.1，可知 $\alpha r_1,\alpha r_2,\cdots,\alpha r_{\varphi(m)}$
+    也是一组模 $m$ 的即约剩余系. 令 $k=\varphi(m)$，我们有
+
+    \begin{equation*}
+        \begin{split}
+            r_1r_2\cdots r_k&\equiv \alpha r_1\alpha r_2\cdots \alpha r_k \pmod m\\
+            &=\alpha^k(r_1r_2\cdots r_k)\pmod m
+        \end{split}
+    \end{equation*}
+
+    因为 $\forall i\in[1,k],\gcd(r_i,m)=1$，所以必定存在 $(r_1r_2\cdots r_k)^{-1}$，两边同时乘 $(r_1r_2
+    \cdots r_k)^{-1}$，得 $1\equiv \alpha^k \equiv\alpha^{\varphi(m)}\pmod m$. 得证. 
+
 \end{proof}
 
 \end{document}
