@@ -416,11 +416,26 @@ $a$ 整除，记作 $a\mathrel{|}b$，否之，记作 $a \nmid b$.
 \end{proof}
 
 \begin{exam}
-    设 $n=4444^{4444}$，有 $n$ 的各位数字之和为 $a$，$a$ 的各位数字之和为 $b$，求 $b$ 的各位数字之和 $c$。
+    设 $n=4444^{4444}$，有 $n$ 的各位数字之和为 $a$，$a$ 的各位数字之和为 $b$，求 $b$ 的各位数字之和 $c$. 
 \end{exam}
 
 \begin{proof}[解]
-    
+    显然，有 $n\equiv a\equiv b \equiv c\pmod 9$. 
+
+    因为 $4444\equiv 7\pmod 9$，所以 $n\equiv 4444^{4444}\equiv 7^{3\times 1481+1}\equiv {7^3}^{1481}\times 
+    7\pmod 9$. 
+
+    又因为 $7^3\equiv 343\equiv 1\pmod 9$，所以 $n\equiv 1\times 7\equiv 7 \pmod 9$. 这就说明，$c\equiv 7
+    \pmod 9$. 显然，最小的 $c$ 为 $7$. 我们只需要证明 $c<16$，即可证明 $c=7$. 
+
+    因为一个自然数的每一位数字都取值于 $[0,9]$，所以，一个自然数的每位数字之和的最大值是由其的位数决定的. 那么，我们可以
+    依次估算 $n,a,b,c$ 的最大可能位数.
+
+    $n=4444^{4444}$，由于 $k$ 个 $4$ 为数的乘积不会超过 $4k$ 位数，所以 $n$ 不超过 $4\times 4444=17776$.
+
+    这说明了 $a\le 17776\times 9=159984$。继续推导，$b\le 1+9\times 5=46,c\le 4+9=13$。
+
+    因为 $c\le 13$，且 $c\equiv 7\pmod 9$，所以 $c=7$。
 \end{proof}
 
 \end{document}
