@@ -134,7 +134,7 @@ $a$ 整除，记作 $a\mathrel{|}b$，否之，记作 $a \nmid b$.
         \end{split}
     \end{equation*}
 
-    因为有 $a-b\equiv 0 \pmod {mk}$，所以有 $a \equiv b \pmod {mk}$.
+    因为有 $ak-bk\equiv 0 \pmod {mk}$，所以有 $ak \equiv bk \pmod {mk}$.
 \end{proof}
 
 同余还有一个很重要的性质.
@@ -358,31 +358,69 @@ $a$ 整除，记作 $a\mathrel{|}b$，否之，记作 $a \nmid b$.
 
 \subsection{同余式的定义及简单应用}
 
-同余及同余式的定义，已在 1.4 中介绍。这里给出几个同余式的例。
+同余及同余式的定义，已在 1.4 中介绍. 这里给出几个同余式的例. 
 
 \begin{exam}
-    试证明，$n=8888^{2222}+7777^{3333}$ 是 $37$ 的倍数。
+    试证明，$n=8888^{2222}+7777^{3333}$ 是 $37$ 的倍数. 
 \end{exam}
 
 \begin{proof}
-    要证明 $n$ 是 $37$ 的倍数，即证明 $n\equiv 0 \pmod {37}$。
+    要证明 $n$ 是 $37$ 的倍数，即证明 $n\equiv 0 \pmod {37}$. 
 
-    由于 $8888=37\times 240+8,7777=37\times 210+7$，所以 $8888\equiv 8,7777\equiv 7\pmod {37}$。
+    由于 $8888=37\times 240+8,7777=37\times 210+7$，所以 $8888\equiv 8,7777\equiv 7\pmod {37}$. 
 
-    再由于 $8^2=64=37\times 2,7^3=343=37\times 9+10$，得 $8^2\equiv -10,7^3\equiv 10\pmod {37}$。
+    再由于 $8^2=64=37\times 2,7^3=343=37\times 9+10$，得 $8^2\equiv -10,7^3\equiv 10\pmod {37}$. 
     
-    所以 $n=8888^{2222}+7777^{3333}\equiv(-10)^{1111}+10^{1111}\equiv 0\pmod {37}$。
+    所以 $n=8888^{2222}+7777^{3333}\equiv(-10)^{1111}+10^{1111}\equiv 0\pmod {37}$. 
 \end{proof}
 
 \begin{exam}
-    任意给定一组数 $a_1,a_2,\cdots,a_n$，试证明：必定存在 $1\le i<j\le n$，使得 $n\mid \sum\limits_{k=i}^j a_k$。
+    任意给定一组数 $a_1,a_2,\cdots,a_n$，试证明：必定存在 $1\le i<j\le n$，使得 $n\mid \sum\limits_{k=i}^j a_k$. 
 \end{exam}
 
 \begin{proof}
-    记 $s_k=(\sum\limits_{l=1}^k a_l)\bmod n$，特别的，$s_0=0$。
+    记 $s_k=(\sum\limits_{l=1}^k a_l)\bmod n$，特别的，$s_0=0$. 
     
-    显然，$s_k\in[0,n-1]$，即，$s_k$ 仅有 $n$种取值。那么根据鸽巢原理，必定存在 $s_i=s_j(0\le i<j\le n)$，
-    此时有 $s_j-s_i\equiv 0\pmod n$，所以，区间 $a_{i+1},a_{i+1},\cdots,a_j$ 的和为 $n$ 的倍数。
+    显然，$s_k\in[0,n-1]$，即，$s_k$ 仅有 $n$种取值. 那么根据鸽巢原理，必定存在 $s_i=s_j(0\le i<j\le n)$，
+    此时有 $s_j-s_i\equiv 0\pmod n$，所以，区间 $a_{i+1},a_{i+1},\cdots,a_j$ 的和为 $n$ 的倍数. 
+\end{proof}
+
+\begin{theorem}
+    一个数 $x=\overline{a_na_{n-1}a_{n-2}\cdots a_1},x\bmod 9 = a_n+a_{n-1}+\cdots + a_1\bmod 9$. 
+\end{theorem}
+
+\begin{proof}
+    将 $x$ 化为十进制的等价写法 $x=10^{n-1}a_n+10^{n-2}a_{n-1}+\cdots+a_1$，那么
+
+    \begin{equation*}
+        \begin{split}
+            x\bmod 9 &=10^{n-1}a_n+10^{n-2}a_{n-1}+\cdots+a_1 \bmod 9\\
+            &=1^{n-1}a_n+1^{n-2}a_{n-1}+\cdots+a_1\bmod 9\\
+            &=a_n+a_{n-1}+\cdots + a_1\bmod 9
+        \end{split}
+    \end{equation*}
+
+    得证. 
+\end{proof}
+
+\begin{exam}
+    求 $1532^5-1\bmod 9$. 
+\end{exam}
+
+\begin{proof}[解]
+    根据定理 2.1，有 $1532\equiv 1+5+3+2\equiv 2 \pmod 9$. 
+
+    所以 $1532^5\equiv 2^5\equiv 32 \equiv 5 \pmod 9$. 
+    
+    所以 $1532^5-1\equiv 5-1 \equiv 4 \pmod 9$. 
+\end{proof}
+
+\begin{exam}
+    设 $n=4444^{4444}$，有 $n$ 的各位数字之和为 $a$，$a$ 的各位数字之和为 $b$，求 $b$ 的各位数字之和 $c$。
+\end{exam}
+
+\begin{proof}[解]
+    
 \end{proof}
 
 \end{document}
