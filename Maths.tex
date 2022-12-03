@@ -1,0 +1,388 @@
+\documentclass[a4paper]{article}
+\usepackage[UTF8]{ctex}
+\usepackage{ulem}\usepackage{ulem}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{xeCJKfntef}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[usenames,dvipsnames]{xcolor}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}{引理}[section]
+\newtheorem{corollary}{推论}[section]
+\newtheorem{exam}{例}[subsection]
+
+\title{基础数学知识}
+\author{屈泰瑞 XiaoQuQu}
+\date{\today}
+
+% \geometry{papersize=A4}
+\geometry{left=1cm,right=1cm,top=2cm,bottom=2cm}
+
+\pagestyle{fancy}
+
+\lhead{\bf 基础数学知识}
+\chead{}
+\rhead{屈泰瑞}
+\lfoot{}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section{数论基础}
+
+\subsection{数域}
+
+对于一个数的集合 $F$，如果 $\forall a,b\in F$，都有 $a+b,a-b,a\times b,\frac
+    {a}{b}(b\ne 0) \in F$，那么 $F$ 就称为一个数域. 几个常见的数域都有自己的记号，如有
+理数域 $Q$，实数域 $R$，复数域 $C$. 但注意，自然数的集合 $N$ 不是一个域.
+
+如果一个数域 $F$ 里的每一个数都在另一个数域 $P$ 里，那么称 $F$ 是 $P$ 的一个子域.
+
+\begin{theorem}
+    有理数域 $Q$ 是最小的数域.
+\end{theorem}
+
+\begin{proof}
+    根据数域的定义，有 $0,1\in F$.
+
+    于是，有 $1\in F, 1+1\in F,\cdots, x\in F(x\in Z^+)$. 其中，$Z^+$ 为正整数集合.
+
+    同样的，有 $-1\in F,-1-1\in F,\cdots, x\in F(x\in Z)$. 其中，$Z$ 为整数集合.
+
+    根据除法的封闭性，有 $Q\subseteq F$.
+\end{proof}
+
+\begin{theorem}
+    若 $F_1,F_2$ 为数域，则 $F_1 \cap F_2$ 也为数域.
+\end{theorem}
+
+证明显然.
+
+\subsection{整除}
+
+对于两个整数 $a,b$，若 $a\ne 0$ 且存在 $c \in Z$ 使得 $b=ca$，那么我们称 $b$ 可被
+$a$ 整除，记作 $a\mathrel{|}b$，否之，记作 $a \nmid b$.
+
+若对于两个整数 $a,b$，有 $a|b$，我们称 $a$ 为 $b$ 的因数，$b$ 为 $a$ 的倍数.
+
+\subsection{最小公倍数、最大公因数}
+
+对于给定的 $a,b$，记最大使得 $x \mid a,x \mid b$ 的 $x\in Z$ 为 $a,b$ 的最大公因数
+，记作 $\gcd(a,b)$. 记最小使得 $a\mid x,b\mid x$ 的 $x \in Z$ 为 $a,b$ 的最小
+公因数，记作 $\operatorname{lcm}(a,b)$.
+
+\begin{theorem}
+    对于给定的 $a,b$，$\gcd(a,b)\times \operatornamewithlimits{lcm}(a,b)=a\times b$.
+\end{theorem}
+
+\begin{proof}
+    设 $x=\gcd(a,b),y=\operatornamewithlimits{lcm}(a,b)$.
+
+    则 $a=m\times x,b=n\times x$，$n$ 与 $m$ 应为互质关系.
+
+    故 $y=m\times n\times x$.
+
+    等式两边同乘 $x$，即 $x\times y=m\times n\times x^2=a\times b$. 得证.
+\end{proof}
+
+若两个整数 $a,b$ 有 $\gcd(a,b)=1$，那么我们称 $a,b$ \textbf{互素}. 如，$2,3$ 就是
+一对互素的数，$2,4$ 不是一对互素的数，因为 $\gcd(2,4)=2\ne 1$.
+
+显然，质数与任一非自身的数都互素.
+
+\subsection{同余}
+
+若有 $a\in Z,b\in Z$ 使得 $a=xm+r,b=ym+r$，我们就称 $a,b$ 在模 $m$ 意义下同余，
+记作 $a\equiv b \pmod m$.
+
+同余有非常多的性质，简单列举几条容易被发现的性质.
+
+\begin{itemize}
+    \item 自反性，$a\equiv a\pmod m$.
+    \item 传递性，若 $a\equiv b\pmod m,b\equiv c \pmod m$，那么
+          $a\equiv c\pmod m$.
+\end{itemize}
+
+\begin{theorem}
+    设 $a,b \in Z, k,n\in N^*$，若 $a\equiv b \pmod m$，那么
+    $ak\equiv bk \pmod mk$.
+\end{theorem}
+
+\begin{proof}
+    设 $a=xm+r,b=ym+r$.
+
+    那么有
+    \begin{equation*}
+        \begin{split}
+            ak-bk&\equiv (xm+r)k-(ym+r)k\pmod {mk}\\
+            &\equiv xmk+rk-ymk-rk\\
+            &\equiv (x-y)mk\\
+            &\equiv 0
+        \end{split}
+    \end{equation*}
+
+    因为有 $a-b\equiv 0 \pmod {mk}$，所以有 $a \equiv b \pmod {mk}$.
+\end{proof}
+
+同余还有一个很重要的性质.
+
+\begin{theorem}
+    当 $a\equiv b \pmod m$ 时，设 $x\in Z$，以下等式均成立.
+
+    \begin{itemize}
+        \item $a+x \equiv b+x \pmod m$.
+        \item $a-x \equiv b-x \pmod m$.
+        \item $a\times x \equiv b\times x \pmod m$.
+    \end{itemize}
+\end{theorem}
+
+\begin{proof}
+    这里仅证明 $a\times x \equiv b\times x \pmod m$，其他情况同理.
+
+    设 $a=qm+r,b=pm+r$，那么我们有
+
+    \begin{equation*}
+        \begin{split}
+            ax-bx &\equiv (qm+r)x-(pm+r)x\pmod m\\
+            &\equiv qmx-pmx\\
+            &\equiv 0
+        \end{split}
+    \end{equation*}
+
+    所以有 $a\times x \equiv b\times x \pmod m$.
+\end{proof}
+
+\subsection{函数、积性函数、完全积性函数}
+
+函数 $f$ 可以简单理解成变换.
+
+他的定义如下：\textbf{对于任意 $x,y,y'\in f$，若 $(x,y)\in f,(x,y')\in F$，都满足 $y=y'$}，这样
+的一个关系 $f$ 就称为函数.
+
+我们习惯将 $(x,y)\in f$ 等价地写成 $y=f(x)$.
+
+如果一个函数 $f$，对于两个互素的数 $a,b$，都有 $f(1)=1$ 且 $f(a\times b) = f(a)\times f(b)$，那么我们称这个函数
+是一个\textbf{积性函数}.
+
+如果一个函数 $f$，对于两个正整数 $a,b$，都有 $f(1)=1$ 且 $f(a\times b) = f(a)\times f(b)$，那么我们称这个函数是
+一个\textbf{完全积性函数}.
+
+几个积性函数的例子：
+
+\begin{itemize}
+    \item 单位函数：$\varepsilon(n)=[n=1]$（完全积性函数）.
+    \item 欧拉函数：$\varphi(n)=\sum\limits_{i=1}^n[\gcd(i,n)=1]$（完全积性函数）.
+\end{itemize}
+
+\subsection{质数及其性质}
+
+若一个数 $p$，他的因子仅有 $1$ 与它自身，那么称 $p$ 是一个\textbf{质数}，质数又称素数. 若存在 $x$ 使得 $x|p$ 且 $x
+    \ne 1,x\ne p$，那么称 $p$ 是一个合数.
+
+若 $p$ 是一个质数（或合数），那么 $-p$ 也是一个质数（或合数），$1$ 既不是质数也不是合数.
+
+\newpage
+
+\begin{theorem}
+    素数有无穷多个.
+\end{theorem}
+
+\begin{proof}
+    反证法. 设素数是有穷个，那么我们可以设素数个数为 $k$，将素数一一列举出来：$p_1,p_2,\cdots,p_k$.
+
+    那么我们可以构造一个整数 $x=p_1p_2\cdots p_k+1$. 这个整数 $p_1\nmid x,p_2\nmid x,\cdots,p_k\nmid x$，所
+    以其是一个质数，与素数只有 $k$ 个相矛盾. 所以素数是无穷多个的.
+\end{proof}
+
+\begin{theorem}
+    任何一个大于 $3$ 的素数，都可以被表示为 $6x\pm 1$ 的形式.
+\end{theorem}
+
+\begin{proof}
+    设 $n=6q+r(q,r\in Z^+),r \in [0,5]$，$n$ 为任意一个大于 $3$ 的正整数.
+
+    若 $r=0,2,4$，那么 $n$ 必定不是一个质数，因为其可以被 $2$ 整除.
+
+    若 $r=3$，那么 $n$ 也必定不是一个质数，因为其可以被 $3$ 整除.
+
+    那么，若 $n$ 要为一个质数，则 $r$ 就必须为 $1$ 或 $5$.
+
+    当 $r=1$ 的时候，显然 $x$ 取 $q$ 的时候，$n$ 可以被表示成一个 $6x+1$ 的形式. 当 $r=5$ 的时候，$n=6q+5=6q+
+        (6-1)=6(q+1)-1$，于是，当 $x$ 取 $q+1$ 的时候，$n$ 可以被表示为一个 $6x-1$ 的形式.
+
+    所以，任意一个质数都可以被表示成 $6x\pm 1$ 的形式.
+\end{proof}
+
+\subsection{算数基本定理}
+
+\begin{lemma}{（裴蜀定理）}
+    若 $a,b$ 是整数，且 $\gcd(a,b)=d$，那么对于任意的 $x,y$，$ax+by$ 都是 $d$ 的倍数. 特别的，一定存在 $x,y$
+    使得 $ax+by=d$ 成立. 
+\end{lemma}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 若 $a,b$ 中有一个为 $0$，那么 $\gcd(a,b)=a$，这时裴蜀定理显然成立. 
+        \item 若 $a,b$ 均不为零. 由于有 $\gcd(a,b)=\gcd(a,-b)$，不妨设 $a\ge b>0,\gcd(a,b)=d$. 对于
+              $ax+by=d$，两边同时除以 $d$，得 $a'x+b'y=1$，其中 $\gcd(a',b')=1$. 
+    \end{enumerate}
+
+    考虑辗转相除法，$\gcd(a,b)=\gcd(b,a\bmod b)$，设 $a\bmod b = r$，那么有
+
+    \begin{equation*}
+        \begin{split}
+            \gcd(a_1,b_1)&=\gcd(b_1,r_1)\\
+            &=\gcd(r_1,r_2)\\
+            &=\cdots\\
+            &=\gcd(r_{n-1},r_n)\\
+            &=1
+        \end{split}
+    \end{equation*}
+
+    将这之中的 $\gcd$ 运算展开，得到
+
+    \begin{equation*}
+        \begin{split}
+            \begin{aligned}
+                a_1 &= q_1b+r_1 &(0\leq r_1<b_1) \\ 
+                b_1 &= q_2r_1+r_2 &(0\leq r_2<r_1) \\ 
+                r_1 &= q_3r_2+r_3 &(0\leq r_3<r_2) \\ 
+                &\cdots \\ 
+                r_{n-3} &= q_{n-1}r_{n-2}+r_{n-1} \\
+                r_{n-2} &= q_nr_{n-1}+r_n \\ 
+                r_{n-1} &= q_{n+1}r_n
+            \end{aligned}
+        \end{split}
+    \end{equation*}
+
+    为符合最终形式，将 $q$ 替换成 $x$，不妨令辗转相除法在除到互质的时候退出则 $r_n=1$，所以有
+
+    $$
+    r_{n-2}=x_nr_{n-1}+1
+    $$
+
+    即
+
+    $$
+    1=r_{n-2}-x_nr_{n-1}
+    $$
+
+    由倒数第三个式子 $r_{n-1}=r_{n-3}-x_{n-1}r_{n-2}$ 代入上式，得
+
+    $$
+    1=(1+x_nx_{n-1})r_{n-2}-x_nr_{n-3}
+    $$
+
+    然后用同样的办法用它上面的等式逐个地消去 $r_{n-2},\cdots,r_1$，可证得 $1=a_1x+b_1y$. 
+    
+    这样等于是一般式中 $d=1$ 的情况. 
+\end{proof}
+
+\begin{lemma}
+    若一个素数 $p$ 有 $p\mid ab$，那么 $p\mid a$ 与 $p\mid b$ 中至少有一个成立. 
+\end{lemma}
+
+\begin{proof}
+    若 $p\mid a$，证明完毕. 否则，由素数定义知，$\gcd(a,p)=1$，根据裴蜀定理，有整数对 $(m,n)$ 使得 $ma+np=1$. 
+
+    于是，$b=b(ma+np)=abm+bnp$. 
+
+    由于有 $p\mid ab$，不妨设 $pk=ab$. 那么上式可以被转成 $pkm+bnp=p(km+bn)$. 于是 $p\mid b$. 
+\end{proof}
+
+上述引理被称为 \textbf{算数基本引理}，其是素数的最本质性质. 上述给出的素数的定义，实际上为\textbf{不可约数}. 素数是
+不可约数的子集. 
+
+\begin{theorem}
+    任何一个大于 $1$ 的正整数 $x$，都可以被分解为 $x=p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_k^{\alpha_k}(p_1<
+    p_2<\cdots<p_k)$ 的形式，其中，$p_1,p_2,\cdots,p_k$ 为素数.
+\end{theorem}
+
+\begin{proof}
+    \textbf{存在性，待证命题：大于 $1$ 的自然数必然可以被写成素数的乘积. }
+
+    反证法，设存在一个最小的大于 $1$ 的正整数 $n$，使得 $n$ 不能被分解为素数的乘积. 
+
+    首先，$n$ 不是质数. 因为任何一个质数都可以被分解成自身与 $1$ 的乘积. 其次，$n$ 不是合数，因为任何一个合数都可以被分解
+    成两个小于自身、大于 $1$ 的数 $a,b$ 的乘积. 由 $n$ 的定义可知，$n$ 是最小的不能被分解为质数的数，于是 $a,b$ 都可以
+    被分解为质数的乘积，那么 $n$ 也可以被分解为质数的乘积. 所以 $n$ 不是合数. 根据 $n$ 的定义可知，$n$ 不为 $1$. 所以
+    不存在这样的 $n$. 得证. 
+
+    \textbf{唯一性. }
+
+    反证法，设 $n$ 是最小的大于 $1$ 的正整数，使得 $n=p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_r^{\alpha_r}
+    =q_1^{\beta_1}q_2^{\beta_2}\cdots q_k^{\beta_k}$. 
+
+    根据引理 1.2，根据 $p_1\mid q_1^{\beta_1}q_2^{\beta_2}\cdots q_k^{\beta_k}$，存在一个 $i$ 使得 $p_1
+    \mid q_i^{\beta_i}(1\le i\le k)$，不妨设 $i=1$. 有 $q_1$ 为质数可知，$p_1\mid q_1$，所以 $p_1=q_1$. 
+
+    假设 $\alpha_1>\beta_1$，将两个分解式同时除以 $q_1^{\beta_1}$，得
+
+    $$
+    p_1^{\alpha_1-\beta_1}p_2^{\alpha_2}\cdots p_r^{\alpha_r}=q_2^{\beta_2}\cdots q_k^{\beta_k}
+    $$
+
+    那么，按照之前的论证，会有 $p_1$ 整除 $q_2,q_3,\cdots,q_k$ 中的任意一个. 但由于 $q_1,q_2,\cdots,q_k$ 两
+    两不等，所以 $p_1=q_1\ne q_i(2\le i\le k)$. 综上，$\alpha_1\not>\beta_1$. 同理可证 $\alpha_1\not<
+    \beta_1$. 于是，$\alpha_1=\beta_1$. 
+
+    于是，我们得
+    
+    $$
+    n'=\frac{n}{p_1^{\alpha_1}}=p_2^{\alpha_2}\cdots p_r^{\alpha_r}=q_2^{\beta_2}\cdots q_k^{\beta_k}
+    <n
+    $$
+
+    由于 $n'<n$，且 $n'$ 也可以被分解成 $n'=p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_r^{\alpha_r}
+    =q_1^{\beta_1}q_2^{\beta_2}\cdots q_k^{\beta_k}$ 的形式，与假设的 $n$ 最小相矛盾. 所以质数分
+    解是唯一的. 
+\end{proof}
+
+定理 1.8 也被称为\textbf{算数基本定理}或\textbf{唯一分解定理}. 该分解式称为\textbf{标准素因数分解式}. 算术基本定理和
+算术基本引理，两个定理是等价的. 
+
+\section{同余}
+
+\subsection{同余式的定义及简单应用}
+
+同余及同余式的定义，已在 1.4 中介绍。这里给出几个同余式的例。
+
+\begin{exam}
+    试证明，$n=8888^{2222}+7777^{3333}$ 是 $37$ 的倍数。
+\end{exam}
+
+\begin{proof}
+    要证明 $n$ 是 $37$ 的倍数，即证明 $n\equiv 0 \pmod {37}$。
+
+    由于 $8888=37\times 240+8,7777=37\times 210+7$，所以 $8888\equiv 8,7777\equiv 7\pmod {37}$。
+
+    再由于 $8^2=64=37\times 2,7^3=343=37\times 9+10$，得 $8^2\equiv -10,7^3\equiv 10\pmod {37}$。
+    
+    所以 $n=8888^{2222}+7777^{3333}\equiv(-10)^{1111}+10^{1111}\equiv 0\pmod {37}$。
+\end{proof}
+
+\begin{exam}
+    任意给定一组数 $a_1,a_2,\cdots,a_n$，试证明：必定存在 $1\le i<j\le n$，使得 $n\mid \sum\limits_{k=i}^j a_k$。
+\end{exam}
+
+\begin{proof}
+    记 $s_k=(\sum\limits_{l=1}^k a_l)\bmod n$，特别的，$s_0=0$。
+    
+    显然，$s_k\in[0,n-1]$，即，$s_k$ 仅有 $n$种取值。那么根据鸽巢原理，必定存在 $s_i=s_j(0\le i<j\le n)$，
+    此时有 $s_j-s_i\equiv 0\pmod n$，所以，区间 $a_{i+1},a_{i+1},\cdots,a_j$ 的和为 $n$ 的倍数。
+\end{proof}
+
+\end{document}
