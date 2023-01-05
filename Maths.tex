@@ -51,8 +51,8 @@
         {a}{b}(b\ne 0) \in F$，那么 $F$ 就称为一个数域.
 \end{definition}
 
-几个常见的数域都有自己的记号，如有理数域 $Q$，实数域 $R$，复数域 $C$. 但注意，自然数的集合 $N$ 不是一个域. 如果一个数
-域 $F$ 里的每一个数都在另一个数域 $P$ 里，那么称 $F$ 是 $P$ 的一个子域.
+几个常见的数域都有自己的记号，如有理数域 $Q$，实数域 $R$，复数域 $C$. 但注意，自然数的集合 $N$ 不是一个域. 如果
+一个数域 $F$ 里的每一个数都在另一个数域 $P$ 里，那么称 $F$ 是 $P$ 的一个子域.
 
 \begin{theorem}
     有理数域 $Q$ 是最小的数域.
@@ -92,7 +92,7 @@
 \end{definition}
 
 \begin{theorem}
-    对于给定的 $a,b$，$\gcd(a,b)\times \operatornamewithlimits{lcm}(a,b)=a\times b$.
+    对于给定的 $a,b$，$\gcd(a,b)\times \operatorname{lcm}(a,b)=a\times b$.
 \end{theorem}
 
 \begin{proof}
@@ -178,7 +178,7 @@
 能使 $ac^{-1}\equiv bc^{-1}\pmod m$ 的 $c^{-1}$ 称为 $c$ 在模 $m$ 意义下的乘法逆元.
 
 \begin{lemma}
-    若 $\gcd(a,b)=1$，必然不存在 $c\in [0,b-1]$ 使得 $ac\equiv 1\pmod b$.
+    若 $\gcd(a,b)=1$，必然不存在 $c\in [0,b-1]$ 使得 $ac\equiv 0\pmod b$.
 \end{lemma}
 
 \begin{proof}
@@ -241,7 +241,7 @@
 
 \begin{itemize}
     \item 单位函数：$\varepsilon(n)=[n=1]$（完全积性函数）.
-    \item 欧拉函数：$\varphi(n)=\sum\limits_{i=1}^n[\gcd(i,n)=1]$（完全积性函数）.
+    \item 欧拉函数：$\varphi(n)=\sum\limits_{i=1}^n[\gcd(i,n)=1]$（积性函数）.
 \end{itemize}
 
 \subsection{质数及其性质}
@@ -513,7 +513,7 @@
 
 \subsection{费马小定理}
 
-先给出一些必要的定义与引理. 
+先给出一些必要的定义与引理.
 
 \begin{definition}
     对于一个非零自然数 $m$，关于 $m$ 同余的所有数构成了 $m$ 的一个剩余类. 显然对于 $m$，有 $m$ 个不同的剩余
@@ -550,13 +550,13 @@
 \begin{theorem}[欧拉定理]
     设欧拉函数 $\varphi(n)$ 为小于等于 $n$ 中，与 $n$ 互素的数的个数.
 
-    若 $\gcd(a,m)=1$，那么必有 $a_{\varphi(m)}\equiv 1\pmod m$.
+    若 $\gcd(a,m)=1$，那么必有 $a^{\varphi(m)}\equiv 1\pmod m$.
 \end{theorem}
 
 显然，当 $m$ 为一个质数的时候，$\varphi(m)=m-1$，也就得到了费马小定理. 这里给出欧拉定理的证明.
 
 \begin{proof}
-    设 $r_1,r_2,\cdots,r_{\varphi(m)}$ 为一组模 $m$ 的既约剩余系. 
+    设 $r_1,r_2,\cdots,r_{\varphi(m)}$ 为一组模 $m$ 的既约剩余系.
 
     设 $\gcd(\alpha,m)=1$，那么根据上述引理 2.1，可知 $\alpha r_1,\alpha r_2,\cdots,\alpha r_{\varphi(m)}$
     也是一组模 $m$ 的即约剩余系. 令 $k=\varphi(m)$，我们有
@@ -569,8 +569,269 @@
     \end{equation*}
 
     因为 $\forall i\in[1,k],\gcd(r_i,m)=1$，所以必定存在 $(r_1r_2\cdots r_k)^{-1}$，两边同时乘 $(r_1r_2
-    \cdots r_k)^{-1}$，得 $1\equiv \alpha^k \equiv\alpha^{\varphi(m)}\pmod m$. 得证. 
-
+        \cdots r_k)^{-1}$，得 $1\equiv \alpha^k \equiv\alpha^{\varphi(m)}\pmod m$. 得证.
 \end{proof}
+
+\subsection{二元一次不定方程}
+
+形如 $ax+by=c$ 的方程，称为二元一次不定方程，其中，$a\ne 0,b\ne 0$.注意，对于二元一次不定方程，我们通常仅求其整数解，
+甚至仅求其自然数解.
+
+\begin{exam}
+    求不定方程 $7x+4y=53$ 的自然数解.
+\end{exam}
+
+\begin{proof}[解. 法一]
+    需要使 $7x+4y=53$，则 $y=\frac{53-7x}{4}$，此时，因为需求其自然数解，直接将 $x=0,1,2,\cdots$ 带入上式，
+    判断对应的 $y$ 是否为自然数即可.
+
+    枚举得 $x=3,y=8$ 或 $x=7$，$y=1$.
+\end{proof}
+
+\begin{proof}[解. 法二]
+    根据同余式求解. 根据不定方程 $7x+4y=53$ 求自然数解可知，$4y\equiv 53 \pmod 7$，否则原方程无整数解.
+
+    这说明，$7\mid 4(y-1)$，因为 $\gcd(4,7)=1$，又有 $7\mid y-1$. 那么所以，$y\equiv 1\pmod 7$.
+
+    于是可知，$y=1$ 或 $y=8$，当 $y>13.25$ 时，$x<0$，故 $y$ 只有 $1,8$ 两种取值.
+
+    容易知，对应的 $x$ 为 $7$ 或 $3$.
+\end{proof}
+
+由此可见，使用同余式求解，会将步骤简单很多.
+
+\begin{exam}
+    用 $100$ 元钱购买 $100$ 只鸡，现已知公鸡一只 $5$ 钱，母鸡一只 $3$ 钱，小鸡三只 $1$ 钱，问如何购买才能刚好花完
+    这 $100$ 元钱.
+\end{exam}
+
+\begin{proof}[解]
+    设公鸡 $x$ 只，母鸡 $y$ 只，小鸡 $z$ 只，由题意得
+
+    \begin{align*}
+        5x+3y+\frac{1}{3}z=100 \\
+        x+y+z=100
+    \end{align*}
+
+    消元法，消去 $z$，得 $7x+4y=100$. 显然有特解 $x_0=4,y_0=18$，所以一般解为 $x=4+4t,y=18-7t,t\in\{0,1,2\}$.
+\end{proof}
+
+\subsection{中国剩余定理}
+
+给定一组同余方程
+
+\begin{equation}
+    \begin{cases}
+        x & \equiv a_1\pmod {m_1} \\
+        x & \equiv a_2\pmod {m_2} \\
+        x & \equiv a_3\pmod {m_3} \\
+          & \vdots                \\
+        x & \equiv a_k\pmod {m_k}
+    \end{cases}
+\end{equation}
+
+其中 $m_1,m_2,\cdots,m_k$ 两两互质，可以使用中国剩余定理求解.
+
+\begin{proof}[解]
+    令 $M=\prod\limits_{i=1}^k m_i,M_i=\frac{M}{m_i}$，令 $M_i^{-1}$ 为
+    $M_i$ 在模 $m_i$ 意义下的乘法逆元，$c_i=M_iM_i^{-1}$（注意此处的 $c_i$ 不对 $m_i$
+    取模），$x$ 在模 $M$ 意义下的唯一解为 $x=\sum\limits_{i=1}^k a_ic_i\pmod M$.
+
+    证明如下，将 $x$ 的式子展开，得到
+
+    \begin{equation*}
+        \begin{split}
+            x&=a_ic_i\pmod {m_i}\\
+            &=a_iM_iM_i^{-1}\pmod {m_i}\\
+            &=a_i
+        \end{split}
+    \end{equation*}
+
+    也就是，$x$ 满足了，对所有 $m_i$ 取模都为 $a_i$，故这是一个原方程组的解.
+\end{proof}
+
+\section{线性代数}
+
+本章内容参考了谢国瑞等人所著的《线性代数（第三版）》一书，在此表示感谢.
+
+\subsection{矩阵}
+
+\begin{definition}
+    $m\times n$ 个元素排成 $m$ 行 $n$ 列，所构成的矩形列表
+
+    \begin{equation}
+        \begin{bmatrix}
+            a_{11} & \cdots & a_{1n} \\
+            \vdots & \ddots & \vdots \\
+            a_{m1} & \cdots & a_{mn} \\
+        \end{bmatrix}
+    \end{equation}
+
+    称为是 $m\times n$ 的矩阵，常用大写黑体字母记，如 $\boldsymbol A$.
+\end{definition}
+
+在不引起混淆的情况下，也将 $(2)$ 写作 $\boldsymbol A=[a_{ij}]$，这里的 $a_{ij}$
+是矩阵第 $i$ 行，第 $j$ 的列的元素. 必要时，使用 $\boldsymbol A_{m\times n}$ 表示
+矩阵 $\boldsymbol A$ 是一个 $m\times n$ 的矩阵.
+
+\begin{definition}
+    若一个矩阵 $\boldsymbol A$ 满足以下条件，则称 $\boldsymbol A$ 是一个梯矩阵：
+    \begin{itemize}
+        \item 当第 $k$ 行全为 $0$ 时，若存在第 $k+1$ 行，则第 $k+1$ 行必定全
+              是 $0$.
+        \item 当第 $k+1$ 行不全为零，则第 $k+1$ 行的首个非零列序号必定大于第 $k$ 行
+              的首个非零列序号.
+    \end{itemize}
+\end{definition}
+
+如，矩阵
+
+\begin{equation}
+    \begin{bmatrix}
+        0 & 1 & 2 & 3 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 0
+    \end{bmatrix},
+    \begin{bmatrix}
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1 \\
+        0 & 0 & 0 & 0
+    \end{bmatrix}
+\end{equation}
+
+就都是梯矩阵.
+
+\begin{definition}
+    若一个梯矩阵各行的首个非零元都为 $1$，且该元所在列其他元均为 $0$，则这样的梯矩阵
+    称为简化梯矩阵. 如 $(3)$ 中列举出来的第 2 个梯矩阵就为一个简化梯矩阵.
+\end{definition}
+
+简化梯矩阵的定义在现在看来是有些奇怪的，他的作用会在线性方程组消元中体现.
+
+\begin{definition}
+    一个矩阵若行数与列数相同，则称其为一个方阵.
+
+    一个方阵从左上元到右下元构成的连线称为其的主对角线.
+
+    若一个方阵的非零元仅出现在其主对角线上或其的上方，则称这样的方阵为上三角阵.
+
+    若一个方阵的非零元仅出现在其主对角线上或其的下方，则称这样的方阵为下三角阵.
+\end{definition}
+
+上三角阵有时以 $\boldsymbol U$ 或 $\boldsymbol R$ 记，下三角阵有时以 $\boldsymbol
+    L$ 记.
+
+\begin{definition}
+    一个既是上三角阵，又是下三角阵的方阵，称为对角阵. 显然，对角阵由其对角线即可确定，
+    一个 $n$ 阶对角阵 $\boldsymbol A$ 可以记作 $\boldsymbol A=\operatorname{diag}
+        (a_1,a_2,\cdots,a_n)$. 即
+
+    $$
+        \operatorname{diag}(a_1,a_2,\cdots,a_n)=\begin{bmatrix}
+            a_1    & 0      & \cdots & 0      \\
+            0      & a_2    & \cdots & 0      \\
+            \vdots & \vdots & \ddots & \vdots \\
+            0      & 0      & \cdots & a_n
+        \end{bmatrix}
+    $$
+
+    当所有 $a_1=a_2=\cdots=a_n$ 的时候，我们称这样的一个矩阵为标量矩阵或数量
+    矩阵. 特别的，当 $a_1=a_2=\cdots=a_n=1$ 的时候，我们称这样的一个矩阵为
+    单位阵，记作 $\boldsymbol I$，有时加入下标表明其的阶数，如 $\boldsymbol I_3$.
+\end{definition}
+
+矩阵拥有其的运算. 其运算不可类比数的运算.
+
+\begin{definition}
+    设 $\boldsymbol A,\boldsymbol B$ 为矩阵，$\boldsymbol A,\boldsymbol B$
+    相等当且仅当 $A,B$ 的行数、列数分别相等，且对于 $\boldsymbol A,\boldsymbol B$
+    中的每个元也对应相等.
+\end{definition}
+
+可以看出，该定义简化了许多数量相等，变为矩阵相等.
+
+\begin{definition}[数乘]
+    设 $\boldsymbol A=[a_{ij}]$ 是一个 $m\times n$ 矩阵，$\alpha$ 为一个常数，定义
+
+    \begin{equation*}
+        \alpha\boldsymbol A=\begin{bmatrix}
+            \alpha a_{11} & \cdots & \alpha a_{1n} \\
+            \vdots        & \ddots & \vdots        \\
+            \alpha a_{m1} & \cdots & \alpha a_{mn} \\
+        \end{bmatrix}
+    \end{equation*}
+
+    即为矩阵的数乘.
+\end{definition}
+
+\begin{definition}[加法]
+    对于两个 $m\times n$ 的矩阵 $\boldsymbol A=[a_{ij}],\boldsymbol B=[b_{ij}]$，定义
+
+    \begin{equation*}
+        \boldsymbol A+\boldsymbol B=\begin{bmatrix}
+            a_{11}+b_{11} & \cdots & a_{1n}+b_{1n} \\
+            \vdots        & \ddots & \vdots        \\
+            a_{m1}+b_{m1} & \cdots & a_{mn}+b_{mn} \\
+        \end{bmatrix}
+    \end{equation*}
+
+    为 $\boldsymbol A+\boldsymbol B$.
+\end{definition}
+
+注意，只有同阶矩阵才能相加，也就是说，当认为记号 $\boldsymbol A+\boldsymbol B$ 有
+意义时，已经默认了 $\boldsymbol A,\boldsymbol B$ 同阶的事实.
+
+定义矩阵的减法为 $\boldsymbol A-\boldsymbol B=\boldsymbol A+(-1)\boldsymbol B
+$，即先对 $\boldsymbol B$ 数乘 $-1$，后进行加法.
+
+\begin{definition}[乘法]
+    设 $\boldsymbol A=[a_{ij}]$ 为 $m\times n$ 矩阵，$\boldsymbol B=[b_{i,j}]$ 为 $n\times s$ 矩阵，$\boldsymbol A\boldsymbol
+        B$ 定义为
+
+    \begin{equation*}
+        \boldsymbol A\boldsymbol B_{i,j}=\sum\limits_{k=1}^n a_{ik}b_{kj}
+    \end{equation*}
+\end{definition}
+
+注意只有方阵才可与自身相乘. $\boldsymbol A\boldsymbol B$ 有意义，当且仅当 $\boldsymbol A$ 的列数与 $\boldsymbol B$ 的行数
+相等.
+
+由矩阵的定义可知，矩阵的乘法不满足交换律，即 $\boldsymbol A\boldsymbol B$ 与 $\boldsymbol B\boldsymbol A$ 不等价，注意，这样
+定义的矩阵乘法绝不是随意编造，而是有其实际意义. 其实际意义将在以后的学习中展现. 
+
+注意，矩阵的运算是从右向左计算，即 $\boldsymbol A\boldsymbol B\boldsymbol C$ 代表 $\boldsymbol A(\boldsymbol B \boldsymbol C)$.
+
+\begin{definition}[转置]
+    给定 $m\times n$ 的矩阵 $\boldsymbol A$，将其的各行作为相同序号的列，形成一个新的矩阵，称为 $\boldsymbol A$ 的转置，记作 $\boldsymbol A^T$. 
+
+    对于一个矩阵 $\boldsymbol A$，若 $\boldsymbol A^T=\boldsymbol A$，称 $\boldsymbol A$ 为对称矩阵. 显然，一个对称矩阵必为一个方阵. 
+\end{definition}
+
+矩阵的运算，拥有加法的交换律、结合律，数乘的结合律，乘法的结合律. 显然的，还有 ${(\boldsymbol A^T)}^T=\boldsymbol A,(\boldsymbol A
++\boldsymbol B)^T=\boldsymbol A^T+\boldsymbol B^T,(\alpha \boldsymbol A)^T=\alpha\boldsymbol A^T$.
+
+\begin{theorem}
+    对于两个可相乘的矩阵 $\boldsymbol A,\boldsymbol B$，有 $(\boldsymbol A\boldsymbol B)^T=\boldsymbol B^T\boldsymbol A^T$.
+\end{theorem}
+
+\begin{proof}
+    设 $\boldsymbol A$ 为 $n\times m$ 矩阵，$\boldsymbol B$ 为 $m\times s$ 矩阵，于是 $\boldsymbol A\boldsymbol B$ 为一个
+    $m\times s$ 矩阵. 由转置的定义可知，$(\boldsymbol A\boldsymbol B)^T$ 为 $s\times m$ 矩阵. 又因为 $\boldsymbol B^T$ 为
+    一个 $s\times n$ 矩阵，$\boldsymbol A^T$ 为 $n\times m$ 矩阵，故 $\boldsymbol B^T\boldsymbol A^T$ 为一个 $s\times m$
+    矩阵. 这就证明了 $(\boldsymbol A\boldsymbol B)^T$ 与 $\boldsymbol B^T\boldsymbol A^T$ 同阶.
+
+    根据定义，我们有 $(\boldsymbol A\boldsymbol B)^T_{ij}=\boldsymbol A\boldsymbol B_{ji}=i\sum\limits_{k=1}^n a_{jk}b_{ki}$，
+    我们又有 $(\boldsymbol B^T\boldsymbol A^T)_{i,j}=\sum\limits_{k=1}^n a_{jk}b_{ki}$，故 $(\boldsymbol A\boldsymbol B)^T$ 
+    与 $\boldsymbol B^T\boldsymbol A^T$ 不仅同阶，其对应位置上的数也相等.
+\end{proof}
+
+由于方阵是可以自乘的，所以使用幂次记号是合理且必要的，故记 $\boldsymbol A^k$ 为 $\boldsymbol A$ 自乘 $k$ 次，即 $\boldsymbol A^k=\begin{matrix}
+    \underbrace{\boldsymbol A\boldsymbol A\cdots\boldsymbol A}\\
+    k\text{ times}
+\end{matrix}$. 
+
+\begin{definition}
+    定义一个元全为零的方阵为零矩阵，记为 $\boldsymbol O$.
+\end{definition}
 
 \end{document}
