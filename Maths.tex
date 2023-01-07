@@ -8,16 +8,38 @@
 \usepackage{hyperref}
 \usepackage{xeCJKfntef}
 \usepackage{array}
+\usepackage{tikz}
 \usepackage{booktabs}
 \usepackage{multirow}
+\usepackage{yhmath}
 \usepackage{amsmath}
+\usepackage{graphicx}  %%  图片包
+\usepackage{subfig}    %% 子图包
+% \usepackage{ctex}      
+\usepackage{float}     %% 浮动个数
 \usepackage{amsthm}
-\usepackage[usenames,dvipsnames]{xcolor}
+% \usepackage[usenames,dvipsnames]{xcolor}
 \newtheorem{theorem}{定理}[section]
 \newtheorem{lemma}{引理}[section]
 \newtheorem{corollary}{推论}[section]
 \newtheorem{exam}{例}[subsection]
 \newtheorem{definition}{定义}[section]
+\newtheorem{axiom}{公理}[section]
+\usetikzlibrary{angles, calc}
+\usetikzlibrary{intersections, through}
+
+\tikzset{
+  dot/.style={
+    circle, fill=black, inner sep=1pt, outer sep=0pt
+  },
+  dot label/.style={
+    circle, inner sep=0pt, outer sep=1pt
+  },
+  % style for every pics named "right angle"
+  pics/right angle/.append style={
+    /tikz/draw, /tikz/angle radius=5pt
+  }
+}
 
 \title{基础数学知识}
 \author{屈泰瑞 XiaoQuQu}
@@ -410,6 +432,8 @@
 
 该分解式称为\textbf{标准素因数分解式}. 算术基本定理和算术基本引理，两个定理是等价的.
 
+\newpage
+
 \section{同余}
 
 \subsection{同余式的定义及简单应用}
@@ -650,6 +674,8 @@
     也就是，$x$ 满足了，对所有 $m_i$ 取模都为 $a_i$，故这是一个原方程组的解.
 \end{proof}
 
+\newpage
+
 \section{线性代数}
 
 本章内容参考了谢国瑞等人所著的《线性代数（第三版）》一书，在此表示感谢.
@@ -797,18 +823,18 @@ $，即先对 $\boldsymbol B$ 数乘 $-1$，后进行加法.
 相等.
 
 由矩阵的定义可知，矩阵的乘法不满足交换律，即 $\boldsymbol A\boldsymbol B$ 与 $\boldsymbol B\boldsymbol A$ 不等价，注意，这样
-定义的矩阵乘法绝不是随意编造，而是有其实际意义. 其实际意义将在以后的学习中展现. 
+定义的矩阵乘法绝不是随意编造，而是有其实际意义. 其实际意义将在以后的学习中展现.
 
 注意，矩阵的运算是从右向左计算，即 $\boldsymbol A\boldsymbol B\boldsymbol C$ 代表 $\boldsymbol A(\boldsymbol B \boldsymbol C)$.
 
 \begin{definition}[转置]
-    给定 $m\times n$ 的矩阵 $\boldsymbol A$，将其的各行作为相同序号的列，形成一个新的矩阵，称为 $\boldsymbol A$ 的转置，记作 $\boldsymbol A^T$. 
+    给定 $m\times n$ 的矩阵 $\boldsymbol A$，将其的各行作为相同序号的列，形成一个新的矩阵，称为 $\boldsymbol A$ 的转置，记作 $\boldsymbol A^T$.
 
-    对于一个矩阵 $\boldsymbol A$，若 $\boldsymbol A^T=\boldsymbol A$，称 $\boldsymbol A$ 为对称矩阵. 显然，一个对称矩阵必为一个方阵. 
+    对于一个矩阵 $\boldsymbol A$，若 $\boldsymbol A^T=\boldsymbol A$，称 $\boldsymbol A$ 为对称矩阵. 显然，一个对称矩阵必为一个方阵.
 \end{definition}
 
 矩阵的运算，拥有加法的交换律、结合律，数乘的结合律，乘法的结合律. 显然的，还有 ${(\boldsymbol A^T)}^T=\boldsymbol A,(\boldsymbol A
-+\boldsymbol B)^T=\boldsymbol A^T+\boldsymbol B^T,(\alpha \boldsymbol A)^T=\alpha\boldsymbol A^T$.
+    +\boldsymbol B)^T=\boldsymbol A^T+\boldsymbol B^T,(\alpha \boldsymbol A)^T=\alpha\boldsymbol A^T$.
 
 \begin{theorem}
     对于两个可相乘的矩阵 $\boldsymbol A,\boldsymbol B$，有 $(\boldsymbol A\boldsymbol B)^T=\boldsymbol B^T\boldsymbol A^T$.
@@ -821,8 +847,220 @@ $，即先对 $\boldsymbol B$ 数乘 $-1$，后进行加法.
     矩阵. 这就证明了 $(\boldsymbol A\boldsymbol B)^T$ 与 $\boldsymbol B^T\boldsymbol A^T$ 同阶.
 
     根据定义，我们有 $(\boldsymbol A\boldsymbol B)^T_{ij}=\boldsymbol A\boldsymbol B_{ji}=i\sum\limits_{k=1}^n a_{jk}b_{ki}$，
-    我们又有 $(\boldsymbol B^T\boldsymbol A^T)_{i,j}=\sum\limits_{k=1}^n a_{jk}b_{ki}$，故 $(\boldsymbol A\boldsymbol B)^T$ 
+    我们又有 $(\boldsymbol B^T\boldsymbol A^T)_{i,j}=\sum\limits_{k=1}^n a_{jk}b_{ki}$，故 $(\boldsymbol A\boldsymbol B)^T$
     与 $\boldsymbol B^T\boldsymbol A^T$ 不仅同阶，其对应位置上的数也相等.
 \end{proof}
+
+由于方阵是可以自乘的，所以使用幂次记号是合理且必要的，故记 $\boldsymbol A^k$ 为 $\boldsymbol A$ 自乘 $k$ 次，即 $\boldsymbol A^k=\begin{matrix}
+        \underbrace{\boldsymbol A\boldsymbol A\cdots\boldsymbol A} \\
+        k\text{ times}
+    \end{matrix}$.
+
+\begin{definition}
+    定义一个元全为零的方阵为零矩阵，记为 $\boldsymbol O$.
+\end{definition}
+
+\begin{theorem}
+    对于一个 $m\times n$ 的矩阵 $\boldsymbol A$，有 $\boldsymbol I_m\boldsymbol A=\boldsymbol A
+        \boldsymbol I_n=\boldsymbol A$，以及对于适当维度的零矩阵 $\boldsymbol O$，有 $\boldsymbol A
+        \boldsymbol O=\boldsymbol O,\boldsymbol O\boldsymbol A=\boldsymbol O$.
+\end{theorem}
+
+显然，单位矩阵 $\boldsymbol I$ 与任何一个矩阵都是可交换相乘的，于是易证
+
+$$
+    (\boldsymbol A+\boldsymbol I)^2=\boldsymbol A^2+2\boldsymbol A+\boldsymbol I
+$$
+
+对于一个对角阵，他的正整数次幂有一个很简单的公式，如下.
+
+$$
+    \operatorname{diag}(\delta_1,\delta_2,\cdots,d_n)^k=\operatorname{diag}(\delta_1^k,\delta_2^k,\cdots
+    \delta_n^k)
+$$
+
+在上文已经提及了模意义下的乘法逆元，现在讨论矩阵的逆. 考虑到单位矩阵可当作代数中的 $1$，于是我们有如下定义.
+
+\begin{definition}
+    对于给定的矩阵 $\boldsymbol A$，若存在矩阵 $\boldsymbol B$ 使得 $\boldsymbol A\boldsymbol B=\boldsymbol B\boldsymbol A
+        = \boldsymbol I$，那么我们称 $\boldsymbol B$ 为 $\boldsymbol A$ 的逆矩阵，记为 $\boldsymbol A^{-1}$，称 $\boldsymbol A$
+    为可逆矩阵，或非奇异矩阵.
+\end{definition}
+
+\begin{theorem}
+    如果 $\boldsymbol A$ 为一个可逆阵，则其逆阵唯一.
+\end{theorem}
+
+\begin{proof}
+    设 $\boldsymbol A$ 有两个逆矩阵 $\boldsymbol B,\boldsymbol C$，我们有
+
+    \begin{equation*}
+        \boldsymbol B=\boldsymbol B\boldsymbol I=\boldsymbol B \boldsymbol A \boldsymbol C=\boldsymbol I \boldsymbol C
+        = \boldsymbol C
+    \end{equation*}
+
+    即 $\boldsymbol B=\boldsymbol C$，所以 $\boldsymbol A$ 的逆矩阵唯一.
+\end{proof}
+
+由定理 3.3 易知，$\boldsymbol I$ 的逆矩阵为它自身. 称不存在逆矩阵的矩阵为奇异阵或退化阵.
+
+\newpage
+
+\section{平面几何}
+
+\subsection{基本概念}
+
+点、直线是平面几何中的基本图形. 一条直线是由无数个点构成的. 平面上的其他点在这条直线的两侧. 显然，我们有如下公理. 公理不必证明，我们默认其为真
+命题.
+
+\begin{axiom}
+    两点确定一条直线.
+\end{axiom}
+
+\begin{figure}[!h]
+    \begin{tikzpicture}
+        \node at (0, 0) [left] {A};
+        \node at (3, 0) [right] {B};
+        \fill (0,0) circle (.05);
+        \fill (3,0) circle (.05);
+        \draw (0,0) -- (3,0);
+    \end{tikzpicture}
+    \centering
+    \caption{两点确定一条直线}
+\end{figure}
+
+如图，点 A 与点 B 唯一确定了它们所在的直线，称为直线 AB.
+
+\begin{theorem}
+    若两条不同直线 $a,b$ 有公共点，那么他们恰有一个公共点.
+\end{theorem}
+
+\begin{proof}
+    设直线 $a,b$ 有两个公共点 $A,B$，那么 $a$ 是由 $A,B$ 确定出的直线，$b$ 也是由 $A,B$ 确定出的直线，则 $a$ 与
+    $b$ 是相同的，与不同直线矛盾，得证.
+\end{proof}
+
+若两直线有公共点，则称其相交，否则称其为平行. 记 $a,b$ 平行为 $a \parallel b$，读作“$a$ 平行于 $b$”.
+
+\begin{definition}
+    从一点引出两条不同射线组成交，称这两条射线为其的边，这一点为其的顶点.
+\end{definition}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}[t]{0.4\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \coordinate (A) at (0,0);
+            \coordinate (B) at (4,3);
+            \coordinate (C) at (4,0);
+            \node at (A) [left] {A};
+            \node at (B) [above] {B};
+            \node at (C) [below] {C};
+            \fill (A) circle (.05);
+            % \fill (B) circle (.05);
+            % \fill (C) circle (.05);
+            \draw (A) -- (B);
+            \draw (A) -- (C);
+        \end{tikzpicture}
+        \caption{角的定义}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \begin{tikzpicture}[bar width=0.4]
+            \coordinate (A) at (0,0);
+            \coordinate (B) at (-2,0);
+            \coordinate (C) at (-1,-1);
+            \coordinate (D) at (2,0);
+            \coordinate (E) at (1,1);
+            \node at (A) [above left] {A};
+            \node at (B) [left] {B};
+            \node at (C) [below] {C};
+            \node at (D) [right] {D};
+            \node at (E) [right] {E};
+            \draw (B) -- (D);
+            \draw (E) -- (C);
+        \end{tikzpicture}
+        \caption{对顶角}
+    \end{minipage}
+\end{figure}
+
+记一个以 $A$ 为顶点、$AB,AC$ 为两边的角为 $\angle BAC$. 在不引起混淆的情况下，也可以记作 $\angle A$.
+
+显然，角度有大小. 角度的大小是以其两边所形成的夹角为大小. 若两个图形可以通过在空间中的运动重合，则称这两个图形相等.
+
+\begin{definition}
+    若直线 $BD,CE$ 相交与点 $A$，则称 $\angle BAC$ 与 $\angle EAD$ 为对顶角.
+\end{definition}
+
+\begin{theorem}
+    对顶角相等.
+\end{theorem}
+
+\begin{proof}
+    如图 $3$，将图形反转，使其与自身重合. $\angle EAD$ 的 AE 边落在 AB 上，AD 边落在 AC 上，因此 $\angle DAB
+        =\angle DAE$.
+\end{proof}
+
+\begin{definition}
+    对于 $\angle BAC$，若 AB 与 AC 在同一直线上，称其所围成的角为平角，记平角的大小为 $180^\circ$，将其 $180$ 等分
+    每一等分为 $1^\circ$.
+
+    若两个角的和为 $180^\circ$，则称他们互为对方的补角，称他们的关系为互补. 显然，同角、等角的补角相等.
+
+    记平角的一半为直角，显然，直角都相等. 如图 $4$，若直线 $BD$ 与 $CE$ 相交，交点为 $A$，且 $\angle BAC$ 为直角，则称 $AB$ 与 $CD$ 垂直，记为
+    $AB\bot CD$.
+
+    若两个角的和为直角，则称这两个角互为对方的余角，显然，同角、等角的余角都相等.
+\end{definition}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.4\textwidth}
+        \begin{tikzpicture}
+            \coordinate (A) at (0,0);
+            \coordinate (B) at (-2,0);
+            \coordinate (C) at (0,2);
+            \coordinate (D) at (2,0);
+            \coordinate (E) at (0,-2);
+            \node at (A) [above left] {A};
+            \node at (B) [left] {B};
+            \node at (C) [left] {C};
+            \node at (D) [right] {D};
+            \node at (E) [right] {E};
+            \draw (B) -- (D);
+            \draw (C) -- (E);
+        \end{tikzpicture}
+        \centering
+        \caption{直角、垂直}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \begin{tikzpicture}[bar width=0.4]
+            \coordinate (A) at (1,1);
+            \coordinate (B) at (-1,1);
+            \coordinate (O) at (0,0);
+            \node at (A) [above right] {A};
+            \node at (B) [above left] {B};
+            \node at (O) [right] {O};
+            \fill (A) circle (0.05);
+            \fill (B) circle (0.05);
+            \fill (O) circle (0.05);
+            \coordinate [draw, name path=o, circle through=(A)] (o) at (O);
+            \draw (A) -- (O);
+            \draw (B) -- (O);
+        \end{tikzpicture}
+        \caption{圆、弧}
+    \end{minipage}
+\end{figure}
+
+在平面几何中，还有一种常见的图形是圆. 作一个圆需要用到圆规. 到一个点 $A$ 距离相等的所有点构成了一个圆，这个距离称作这个圆的半径. 
+
+图 5 中，$A,B$ 两点将圆分为了两部分，较小的一部分为劣弧，记作 $\wideparen{AB}$. 较大的一部分称为优弧，记作 $\wideparen{AmB}$. 我们通常
+讨论的是劣弧.
+
+以 $O$ 为圆心、$r$ 为半径的圆通常可以记为 $\odot O$ 或 $\odot (O,r)$.
+
+\subsection{全等三角形}
 
 \end{document}
