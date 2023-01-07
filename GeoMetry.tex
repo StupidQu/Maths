@@ -1,0 +1,71 @@
+\documentclass[a4paper]{article}
+\usepackage[UTF8]{ctex}
+\usepackage{ulem}\usepackage{ulem}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{xeCJKfntef}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{yhmath}
+\usepackage{amsmath}
+\usepackage{graphicx}  %%  图片包
+\usepackage{subfig}    %% 子图包
+\usepackage{float}     %% 浮动个数
+\usepackage{amsthm}
+% \usepackage[usenames,dvipsnames]{xcolor}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}{引理}[section]
+\newtheorem{corollary}{推论}[section]
+\newtheorem{exam}{例}[subsection]
+\newtheorem{definition}{定义}[section]
+\newtheorem{axiom}{公理}[section]
+\usetikzlibrary{angles, calc}
+\usetikzlibrary{intersections, through}
+
+\tikzset{
+  dot/.style={
+    circle, fill=black, inner sep=1pt, outer sep=0pt
+  },
+  dot label/.style={
+    circle, inner sep=0pt, outer sep=1pt
+  },
+  % style for every pics named "right angle"
+  pics/right angle/.append style={
+    /tikz/draw, /tikz/angle radius=5pt
+  }
+}
+
+\title{平面几何选题及解答}
+\author{屈泰瑞 XiaoQuQu}
+\date{\today}
+
+% \geometry{papersize=A4}
+\geometry{left=1cm,right=1cm,top=2cm,bottom=2cm}
+
+\pagestyle{fancy}
+
+\lhead{\bf 平面几何选题及解答}
+\chead{}
+\rhead{屈泰瑞}
+\lfoot{}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section{前言}
+
+本文是根据 数学基础知识 一文编写而成，也是其的配套习题. 您可能需要先学习 数学基础知识 一文中的内容后再阅读本篇文章，否则可能将会
+遇到一些困难.
+
+\end{document}

@@ -1054,7 +1054,7 @@ $$
     \end{minipage}
 \end{figure}
 
-在平面几何中，还有一种常见的图形是圆. 作一个圆需要用到圆规. 到一个点 $A$ 距离相等的所有点构成了一个圆，这个距离称作这个圆的半径. 
+在平面几何中，还有一种常见的图形是圆. 作一个圆需要用到圆规. 到一个点 $A$ 距离相等的所有点构成了一个圆，这个距离称作这个圆的半径.
 
 图 5 中，$A,B$ 两点将圆分为了两部分，较小的一部分为劣弧，记作 $\wideparen{AB}$. 较大的一部分称为优弧，记作 $\wideparen{AmB}$. 我们通常
 讨论的是劣弧.
@@ -1062,5 +1062,163 @@ $$
 以 $O$ 为圆心、$r$ 为半径的圆通常可以记为 $\odot O$ 或 $\odot (O,r)$.
 
 \subsection{全等三角形}
+
+\begin{definition}
+    两个能完全重合的三角形称为全等三角形. 重合后显然有对应边相等，对应角相等. $\triangle ABC$ 与 $\triangle DEF$
+    全等记作 $\triangle ABC\cong \triangle DEF$.
+\end{definition}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.4\textwidth}
+        \begin{tikzpicture}
+            \coordinate (A) at (0,0);
+            \coordinate (B) at (4,0);
+            \coordinate (C) at (3,3);
+            \node at (A) [left] {A};
+            \node at (B) [right] {B};
+            \node at (C) [above] {C};
+            \draw (A) -- (B) -- (C) -- (A);
+        \end{tikzpicture}
+        \centering
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+        \begin{tikzpicture}
+            \coordinate (D) at (0,0);
+            \coordinate (E) at (4,0);
+            \coordinate (F) at (3,3);
+            \node at (D) [left] {D};
+            \node at (E) [right] {E};
+            \node at (F) [above] {F};
+            \draw (D) -- (E) -- (F) -- (D);
+        \end{tikzpicture}
+        \centering
+    \end{minipage}
+    \centering
+    \caption{全等三角形}
+\end{figure}
+
+\begin{theorem}[判定定理 1]
+    如图 $6$，若在 $\triangle ABC$ 与 $\triangle DEF$ 中，有 $AB=DE,AC=DF,\angle BAC=\angle EDF$，则\
+    $\triangle ABC\cong \triangle DEF$.
+\end{theorem}
+
+\begin{proof}
+    将点 A 与点 D 重合，且 C 与 F 在同一侧. 因为有 $\angle BAC=\angle EDF$，所以射线 $AC$ 与射线 $DF$、射线
+    $AB$ 与射线 $DE$ 将可以重合. 同时，又有 $AB=DE,AC=DF$，所以点 C 与点 F 可以重合、点 B 与点 E 可以重合. 故
+    $\triangle ABC$ 与 $\triangle DEF$ 可以完全重合，故 $\triangle ABC\cong \triangle DEF$.
+\end{proof}
+
+为了信息传递方便，我们可以将判定全等三角形的方法写在全等的结论后面. 判定定理 1 称为 边-角-边 证明，也简写为 SAS. 其中
+S 指的是 边(Side)，A 指的是角(Angle). 即，如上的全等证明，记为 $\triangle ABC\cong \triangle DEF (\text{SAS})$.
+
+\begin{corollary}
+    等腰三角形的底角相等.
+\end{corollary}
+
+\begin{proof}
+    在 $\triangle ABC$ 中，$AB=AC$，求证：$\angle ABC=\angle ACB$.
+
+    因为 $AB=AC,AC=AB,\angle BAC=\angle CAB$，所以有 $\triangle ABC \cong \triangle ACB (\text{SAS})$，根据
+    对应角相等，我们有 $\angle ABC=\angle ACB$.
+\end{proof}
+
+这个推论的证明启示我们，全等的对应角、对应边很重要，千万不能弄混.
+
+\begin{theorem}[判定定理 2]
+    如图 $6$，若在 $\triangle ABC$ 与 $\triangle DEF$ 中，有 $AB=DE,\angle CBA=\angle DEF,\angle BAC=\angle EDF$，则
+    $\triangle ABC\cong \triangle DEF$.
+\end{theorem}
+
+证明过程略. 此定理称为 角-边-角 或 ASA 判定定理.
+
+\begin{corollary}
+    若一个三角形两个角相等，则其是等腰三角形.
+\end{corollary}
+
+证明过程可仿照推论 4.1 的证明过程，这里略. 读者可以自行证明.
+
+\begin{theorem}[判定定理 3]
+    如果两个三角形的三条边都相等，则这两个三角形全等.
+\end{theorem}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \begin{tikzpicture}[bar width=0.5\linewidth]
+            \coordinate (A) at (0,0);
+            \coordinate (B) at (4,0);
+            \coordinate (C) at (3,2.5);
+            \coordinate (F) at (3,-2.5);
+            \node at (A) [left] {A(D)};
+            \node at (B) [right] {B(E)};
+            \node at (C) [above] {C};
+            \node at (F) [below right] {F};
+            \draw (A) -- (B) -- (C) -- (A);
+            \draw (A) -- (B) -- (F) -- (A);
+            \draw [dashed] (C) -- (F);
+        \end{tikzpicture}
+        \caption{SSS 全等三角形}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Pictures/O1-13.jpg}
+        \caption{过直线外一点作垂线}
+    \end{minipage}
+\end{figure}
+
+\begin{proof}
+    如图 $7$，因为 $AB=DE$，所以我们可以将其重合. 连接 $CF$，因为 $AC=DF$，所以 $\angle AFC=\angle ACF$，
+    同理，有 $\angle FCB=\angle CFB$. 所以我们可以得到，$\angle AFB=\angle ACF$.
+
+    因为我们有 $AF=AC,\angle AFB=\angle ACB,CB=FB$，所以 $\triangle ABC \cong \triangle DEF(\text{SAS})$.
+\end{proof}
+
+判定定理 3 称为 边-边-边 判定，也称为 SSS. 三角形全等的应用极为广泛，接下来通过几个例题介绍一下.
+
+\begin{exam}
+    给定一直线 $l$，在直线 $l$ 外的一点 $A$，做经过 $A$ 且与 $l$ 垂直的直线.
+\end{exam}
+
+\begin{proof}[解]
+    先给出做法. 如图 $8$，以点 $A$ 为圆心，适当长度为半径作圆，交直线 $l$ 于 $B,C$ 两点. 再以 $B,C$ 为圆心，相同长度
+    为半径作圆，两圆交于点 $D$，连接 $AD$，有 $AD\bot l$.
+
+    接下来证明 $AD \bot l$，如图 9 所示，连接 $AB,AC,BD,CD$，设 AD 交 BC 于点 E.
+
+    \begin{figure}[htbp]
+        \begin{minipage}{0.4\textwidth}
+            \centering
+            \includegraphics[width=0.5\linewidth]{Pictures/O2-3.jpg}
+            \caption{过直线外一点作垂线}
+        \end{minipage}
+        \centering
+        \begin{minipage}{0.4\textwidth}
+            \centering
+            \includegraphics[width=0.5\linewidth]{Pictures/O2-4.jpg}
+            \caption{等腰三角形的三线合一}
+        \end{minipage}
+    \end{figure}
+
+    因为 $AB=AC,BD=CD,AD=AD$，所以有 $\triangle ABD\cong \triangle ACD(\text{SSS})$. 从而我们有 $\angle
+    BAD=\angle CAD$. 又因为 $AB=AC,AE=AE,\angle BAD=\angle CAD$，所以 $\triangle BAE\cong \triangle
+    CAE(\text{SAS})$. 于是可知，$\angle BEA=\angle CEA$，而 $\angle BEA+\angle CEA = 180^\circ$，所以
+    $\angle BEA=\angle CEA=90^\circ$，故 $AD\bot l$.
+\end{proof}
+
+\begin{definition}
+    对于给定的线段，若一直线过其中点且垂直于这条线段，则称该直线为其的垂直平分线.
+
+    对于给定的角，若一射线这个角的顶点为顶点，且在该角的内部，并且将该角分成了两个相等的角，称这条射线为其的角平分线.
+\end{definition}
+
+\begin{theorem}
+    等腰三角形的顶角平分线所在的直线为底边的垂直平分线.
+\end{theorem}
+
+\begin{proof}
+    如图 10 所示（图 10 在上一页），我们有 $AB=AC,AD$ 平分 $\angle BAC$.
+\end{proof}
 
 \end{document}
