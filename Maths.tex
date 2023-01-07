@@ -51,8 +51,8 @@
         {a}{b}(b\ne 0) \in F$，那么 $F$ 就称为一个数域.
 \end{definition}
 
-几个常见的数域都有自己的记号，如有理数域 $Q$，实数域 $R$，复数域 $C$. 但注意，自然数的集合 $N$ 不是一个域. 如果一个数
-域 $F$ 里的每一个数都在另一个数域 $P$ 里，那么称 $F$ 是 $P$ 的一个子域.
+几个常见的数域都有自己的记号，如有理数域 $Q$，实数域 $R$，复数域 $C$. 但注意，自然数的集合 $N$ 不是一个域. 如果
+一个数域 $F$ 里的每一个数都在另一个数域 $P$ 里，那么称 $F$ 是 $P$ 的一个子域.
 
 \begin{theorem}
     有理数域 $Q$ 是最小的数域.
@@ -92,7 +92,7 @@
 \end{definition}
 
 \begin{theorem}
-    对于给定的 $a,b$，$\gcd(a,b)\times \operatornamewithlimits{lcm}(a,b)=a\times b$.
+    对于给定的 $a,b$，$\gcd(a,b)\times \operatorname{lcm}(a,b)=a\times b$.
 \end{theorem}
 
 \begin{proof}
@@ -178,7 +178,7 @@
 能使 $ac^{-1}\equiv bc^{-1}\pmod m$ 的 $c^{-1}$ 称为 $c$ 在模 $m$ 意义下的乘法逆元.
 
 \begin{lemma}
-    若 $\gcd(a,b)=1$，必然不存在 $c\in [0,b-1]$ 使得 $ac\equiv 1\pmod b$.
+    若 $\gcd(a,b)=1$，必然不存在 $c\in [0,b-1]$ 使得 $ac\equiv 0\pmod b$.
 \end{lemma}
 
 \begin{proof}
@@ -824,16 +824,5 @@ $，即先对 $\boldsymbol B$ 数乘 $-1$，后进行加法.
     我们又有 $(\boldsymbol B^T\boldsymbol A^T)_{i,j}=\sum\limits_{k=1}^n a_{jk}b_{ki}$，故 $(\boldsymbol A\boldsymbol B)^T$ 
     与 $\boldsymbol B^T\boldsymbol A^T$ 不仅同阶，其对应位置上的数也相等.
 \end{proof}
-
-由于方阵是可以自乘的，所以使用幂次记号是合理且必要的，故记 $\boldsymbol A^k$ 为 $\boldsymbol A$ 自乘 $k$ 次，即 $\boldsymbol A^k=\begin{matrix}
-    \underbrace{\boldsymbol A\boldsymbol A\cdots\boldsymbol A}\\
-    k\text{ times}
-\end{matrix}$. 
-
-\begin{definition}
-    定义一个元全为零的方阵为零矩阵，记为 $\boldsymbol O$.
-\end{definition}
-
-
 
 \end{document}
