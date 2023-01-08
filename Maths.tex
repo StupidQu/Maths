@@ -1219,6 +1219,96 @@ S 指的是 边(Side)，A 指的是角(Angle). 即，如上的全等证明，记
 
 \begin{proof}
     如图 10 所示（图 10 在上一页），我们有 $AB=AC,AD$ 平分 $\angle BAC$.
+
+    因为 $AB=AC,\angle BAD=\angle CAD,AD=AD$，所以有 $\triangle ABD\cong \triangle ACD(\text{SAS})$.
+    所以有 $BD=CD,\angle BDA=\angle CDA=90^\circ$.
+\end{proof}
+
+定理 4.6 称作等腰三角形的三线合一.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=0.5\linewidth]{Pictures/O2-5.jpg}
+        \caption{垂直平分线的性质}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=0.7\linewidth]{Pictures/O-P1.5.jpg}
+        \caption{例 4.2.2 图}
+    \end{minipage}
+\end{figure}
+
+\begin{theorem}[垂直平分线的性质]
+    线段的垂直平分线上的点到线段两端距离相等.
+\end{theorem}
+
+\begin{proof}
+    如图 11 所示，$D$ 在线段 $BC$ 上，$AD$ 是 $BC$ 的垂直平分线，$M$ 在直线 $AD$ 上. 求证：$BM=CM$.
+
+    因为 $\angle BDA=\angle CDA=90^\circ,BD=CD,MD=MD$，所以 $\triangle BDM\cong \triangle CDM(\text{SAS})$. 
+    故 $BM=CM$.
+\end{proof}
+
+\begin{definition}
+    如果一个图形可以分为两个部分，其在沿着一条直线对折后重合，我们就称这两个图形关于这条直线对称，这条直线为对称轴，这个原本的
+    图形为轴对称图形. 
+\end{definition}
+
+\begin{exam}
+    如图 $12$ 所示，$AB=AC,AD=AE$，连接 $CD,BE$ 交于点 $F$，连接 $AF$. 求证：$AF$ 平分 $\angle EAD$.
+\end{exam}
+
+\begin{proof}
+    因为 $AC=AB,AE=AD,\angle EAD=\angle DAE$，所以我们有 $\triangle ACD\cong \triangle ABE(\text{SAS})$. 
+    由此可以得到，$\angle ACD=\angle ABE$，即 $\angle DCE=\angle EBD,\angle AEB=\angle CDA$.
+
+    由 $AD=AE,AB=AC$ 可知 $CE=BD$. 所以 $\triangle CFE\cong \triangle BFD(\text{ASA})$，因此有 $FB=FC$.
+
+    又因为 $FB=FC,AB=AC,\angle ACF=\angle ABF$，所以 $\triangle ABF\cong \triangle ACF(\text{SAS})$. 
+    所以可以得出 $\angle BAF=\angle CAF$，所以 $AF$ 平分 $\angle EAD$.
+\end{proof}
+
+\subsection{几何中的不等关系}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=0.5\linewidth]{Pictures/O3-1.jpg}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=0.5\linewidth]{Pictures/O3-2.jpg}
+    \end{minipage}
+    \caption{三角形的外角}
+\end{figure}
+
+\begin{definition}
+    对于一个三角形，延长它的一条边，使之与另一边形成一个夹角，这个角称为三角形的外角.
+
+    如图 $13$ 所示，$\angle ACD$ 就为 $\triangle ABC$ 的一个外角. 
+\end{definition}
+
+\begin{theorem}
+    三角形的外角大于与其不相邻的内角.
+\end{theorem}
+
+\begin{proof}
+    取 $AC$ 中点 $E$，延长 $BE$，在射线 $BE$ 上取一点 $F$ 使得 $EF=BE$，连接 $CF$.
+
+    因为 $AE=EC,BE=EF,\angle AEC=\angle FEC$，所以 $\triangle AEB\cong \triangle CEF(\text{SAS})$.
+    所以有 $\angle A=\angle ACF$. 因为 $\angle ACD>\angle ACF$，所以 $\angle ACD>\angle A$.
+\end{proof}
+
+\begin{corollary}
+    三角形中任意两个角之和小于 $180^\circ$.
+\end{corollary}
+
+\begin{proof}
+    如图 13 所示，因为 $\angle ACD+\angle ACB=180^\circ,\angle ACD>\angle A$，所以 $\angle A+\angle ACB
+    < 180^\circ$.
 \end{proof}
 
 \end{document}
